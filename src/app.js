@@ -17,7 +17,7 @@ hbs.registerPartials('views/partials')
 
 
 
-
+// listening to port
 app.listen(port,()=>{
     console.log(`server start on port number ${port}`);
 })
