@@ -3,6 +3,9 @@ const express = require('express')
 
 const routers = express.Router()
 
+
+// all routes
+
 routers.get('/',(req,resp)=>{
     resp.render('index')
 })
