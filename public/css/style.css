@@ -163,6 +163,8 @@ p {
 
 /*********************************************8* servisec ***********************************************************/
 
+
+
 .texts h1 {
     color: rgba(83, 67, 240, 255);
     text-align: center;
@@ -256,3 +258,12 @@ p {
 .step p {
     font-size: 23px;
 }
+
+/************************************ footer **********************/
+
+.footer-bg {
+    background-image: url(/public/images/footer-bg.png);
+    background-size: cover;
+    padding-top: 280px;
+    margin-top: -125px;
+  }
