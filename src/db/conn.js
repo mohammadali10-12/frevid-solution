@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Demo = require('./model/Demo')
 
 
-const uri = 'mongodb://localhost:27017/demo_db';
+const uri = 'mongodb://localhost:27017/Frevid_DB';
 
 const options = {
   useNewUrlParser: true,
@@ -19,14 +19,14 @@ mongoose.set('strictQuery', true);
 const connectWithDB = () => {
   mongoose.connect(uri, options, (err, db) => {
 
-    Demo.create([
-      {
+    // Demo.create([
+    //   {
 
-        name: 'mohammad',
-        number: 9265533892,
-        address: 'vaghrol'
-      },
-    ]);
+    //     name: 'mohammad',
+    //     number: 9265533892,
+    //     address: 'vaghrol'
+    //   },
+    // ]);
 
 
     if (err) console.error(err);

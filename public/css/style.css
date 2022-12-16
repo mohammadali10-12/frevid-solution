@@ -262,9 +262,17 @@ p {
 /************************************ footer **********************/
 
 .footer-bg img{
-    background-image: url(/public/images/css.png);
+    background-image: url(/images/footer-bg.png);
     background-size: cover;
     height: 50%;
     /* padding-top: 280px;
     margin-top: -125px; */
   }
+
+  /********************************** web **************************/
+  .col-md-6 img {
+   
+width: max-content;
+width: 100%;
+
+}
