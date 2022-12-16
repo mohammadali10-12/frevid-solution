@@ -261,9 +261,10 @@ p {
 
 /************************************ footer **********************/
 
-.footer-bg {
-    background-image: url(/public/images/footer-bg.png);
+.footer-bg img{
+    background-image: url(/public/images/css.png);
     background-size: cover;
-    padding-top: 280px;
-    margin-top: -125px;
+    height: 50%;
+    /* padding-top: 280px;
+    margin-top: -125px; */
   }
