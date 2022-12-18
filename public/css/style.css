@@ -26,11 +26,12 @@ nav {
 
 .dropdown-item:hover {
     color: white;
-    background-color: #0467a1;
+    background-color: rgba(83, 67, 240, 255);
 }
 
-.nav-link {
+.nav-link:hover {
     color: black;
+    color: rgba(83, 67, 240, 255);
 }
 
 
@@ -261,18 +262,59 @@ p {
 
 /************************************ footer **********************/
 
-.footer-bg img{
+.footer-bg img {
     background-image: url(/images/footer-bg.png);
     background-size: cover;
     height: 50%;
     /* padding-top: 280px;
     margin-top: -125px; */
-  }
+}
 
-  /********************************** web **************************/
-  .col-md-6 img {
-   
-width: max-content;
-width: 100%;
+/********************************** web **************************/
+.col-md-6 img {
 
+    width: max-content;
+    width: 100%;
+
+}
+
+/* error page */
+
+
+.page_404 {
+    padding: 40px 0;
+    background: #fff;
+    font-family: 'Arvo', serif;
+}
+
+.page_404 img {
+    width: 100%;
+}
+
+.four_zero_four_bg {
+
+    background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 500px;
+    background-position: center;
+}
+
+
+.four_zero_four_bg h1 {
+    font-size: 80px;
+}
+
+.four_zero_four_bg h3 {
+    font-size: 80px;
+}
+
+.link_404 {
+    color: #fff !important;
+    padding: 10px 20px;
+    background: #39ac31;
+    margin: 20px 0;
+    display: inline-block;
+}
+
+.contant_box_404 {
+    margin-top: -50px;
 }
