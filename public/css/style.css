@@ -238,7 +238,7 @@ p {
 }
 
 
-/* about */
+/******************************** about ***************************/
 
 .col-6 img {
     height: 80%;
@@ -272,13 +272,22 @@ p {
 
 /********************************** web **************************/
 .col-md-6 img {
-
-    width: max-content;
+    height: 80%;
     width: 100%;
 
 }
+.web-text h1{
+    text-align: left;
+    padding-top: 120px;
+    font-weight: 700;
+    color:rgba(83, 67, 240, 255) ;
 
-/* error page */
+}
+.img img{
+    padding-top: 100px;
+}
+
+/******************************* error page *********************/
 
 
 .page_404 {

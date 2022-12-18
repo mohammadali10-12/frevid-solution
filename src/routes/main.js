@@ -14,7 +14,7 @@ routers.get('/about',(req,resp)=>{
     resp.render('about')
 })
 
-routers.get('/service/',(req,resp)=>{
+routers.get('/service',(req,resp)=>{
     resp.render('service')
 })
 
@@ -22,8 +22,8 @@ routers.get('/service/web',(req,resp)=>{
     resp.render('web')
 })
 
-routers.get('/service/logo',(req,resp)=>{
-    resp.render('logo')
+routers.get('/service/branding',(req,resp)=>{
+    resp.render('branding')
 })
 
 routers.get('*',(req,resp)=>{
