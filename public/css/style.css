@@ -209,22 +209,17 @@ p {
     /* margin: 0px 20px; 
 } */
 
-.card-img-top1 {
-    width: 70%;
 
-}
-
-.card-img-top2 {
-    width: 70%;
-}
 
 .card-title {
     text-align: center;
     font-size: 30px;
     padding: 10px 0px;
-    text-decoration: underline;
-    color: rgba(83, 67, 240, 255);
-    font-weight: 700;
+    color: black;
+    font-weight: 900;
+}
+.card-text{
+    font-size: 20px;
 }
 
 .btn button {
@@ -271,22 +266,97 @@ p {
 }
 
 /********************************** web **************************/
+.web_section {
+    background-color: rgba(83, 67, 240, 255);
+    height: 600px;
+
+}
+.web-offer{
+    background-color: rgb(242, 249, 247);
+    height: 550px;
+}
+
 .col-md-6 img {
     height: 80%;
     width: 100%;
 
 }
+
 .web-text {
-    
+
     padding-top: 100px;
     font-weight: 800;
-    font-size: 50px;
-    color:rgba(83, 67, 240, 255) ;
+    font-size: 70px;
+    color: white;
 
 }
 
-.img img{
+.img img {
     padding-top: 30px;
+}
+.p-text p{
+    font-size: 20px;
+}
+.button {
+    /* background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%); */
+    background-color: rgba(83, 67, 240, 255);
+    border-radius: 8px;
+    border-style:solid;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    height: 4rem;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all .5s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-left: 10px;
+}
+
+
+.button:hover {
+    box-shadow: black 0 1px 30px;
+    transition-duration: 0.1s;
+}
+
+@media (min-width: 768px) {
+    .button {
+        padding: 0 2.6rem;
+    }
+}
+
+.btncontact {
+    background-color: white;
+    border-radius: 8px;
+    border: solid 2px black;
+    box-sizing: border-box;
+    color: rgba(83, 67, 240, 255);
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    height: 4rem;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all .5s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-left: 10px;
+}
+
+.btncontact:hover {
+    box-shadow: black 0 1px 30px;
+    transition-duration: 0.1s;
 }
 
 /******************************* error page *********************/
