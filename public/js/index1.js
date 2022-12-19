@@ -1,6 +1,10 @@
 
  var typingEffect = new Typed(".multitext",{
+<<<<<<< HEAD
      strings : ["Website-Desing","Logo-Desing","UI/UX-Desing"] ,
+=======
+     strings : ["Website-Design","Logo-Design","UI/UX-Design"] ,
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
      loop : true,
      typeSpeed : 80,
      backSpeed : 80,

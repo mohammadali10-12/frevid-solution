@@ -1,24 +1,43 @@
+<<<<<<< HEAD
 body
 {
     max-width: 100%;
     overflow-x: hidden;
     scroll-behavior: smooth;
     font-family: 'poiret One' , 'cursive';
+=======
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: 'poiret One', 'cursive';
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
     /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
 }
 
 /**************************** navbar ******************************/
 
+<<<<<<< HEAD
 nav 
 {
     font-size: 20px;
     padding: 20px 0px;
 }
 .tname{
+=======
+nav {
+    color: black;
+    font-size: 20px;
+    padding: 20px 0px;
+}
+
+.tname {
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
     font-size: 25px;
     padding: 20px 0px;
 }
 
+<<<<<<< HEAD
 .colur
 {
     color: rgba(83, 67, 240, 255);
@@ -27,6 +46,21 @@ nav
 .dropdown-item:hover{
     color: white;
     background-color: #0467a1;
+=======
+.colur {
+    color: rgba(83, 67, 240, 255);
+    font-weight: 700;
+}
+
+.dropdown-item:hover {
+    color: white;
+    background-color: rgba(83, 67, 240, 255);
+}
+
+.nav-link:hover {
+    color: black;
+    color: rgba(83, 67, 240, 255);
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
 }
 
 
@@ -34,6 +68,7 @@ nav
 /***********************************8 home *******************************************/
 
 
+<<<<<<< HEAD
 .col-7 img{
     height: 80%;
     width:100%;
@@ -48,6 +83,22 @@ nav
 
 p{
     font-size:27px;
+=======
+.col-7 img {
+    height: 80%;
+    width: 100%;
+}
+
+.heading {
+    font-weight: 700;
+    font-size: 45px;
+
+
+}
+
+p {
+    font-size: 27px;
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
     font-weight: 500;
     text-align: justify;
 }
@@ -55,11 +106,16 @@ p{
 
 
 
+<<<<<<< HEAD
 .t{
+=======
+.t {
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
     color: rgba(83, 67, 240, 255);
     font-size: 50px;
 }
 
+<<<<<<< HEAD
 .button
 {
   /* background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%); */
@@ -104,6 +160,18 @@ p{
     cursor: pointer;
     flex-shrink: 0;
     font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+=======
+.button {
+    /* background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%); */
+    background-color: rgba(83, 67, 240, 255);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
     font-size: 25px;
     font-weight: 500;
     height: 4rem;
@@ -116,15 +184,58 @@ p{
     touch-action: manipulation;
     margin-left: 10px;
 }
+<<<<<<< HEAD
 .btncontact:hover {
     box-shadow: rgba(83, 67, 240, 255) 0 1px 30px;    
     transition-duration: 0.1s;
   }
   
+=======
+
+.button:hover {
+    box-shadow: rgba(83, 67, 240, 255) 0 1px 30px;
+    transition-duration: 0.1s;
+}
+
+@media (min-width: 768px) {
+    .button {
+        padding: 0 2.6rem;
+    }
+}
+
+.btncontact {
+    background-color: white;
+    border-radius: 8px;
+    border: solid 2px rgba(83, 67, 240, 255);
+    box-sizing: border-box;
+    color: rgba(83, 67, 240, 255);
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    height: 4rem;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all .5s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-left: 10px;
+}
+
+.btncontact:hover {
+    box-shadow: rgba(83, 67, 240, 255) 0 1px 30px;
+    transition-duration: 0.1s;
+}
+
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
 
 /**********************************************8 counter *******************************************************/
 
 
+<<<<<<< HEAD
 .counter{
     background-color:rgba(83, 67, 240, 255) ;
     text-align: center;
@@ -136,10 +247,20 @@ p{
     font-weight: 700;
 }
 .nul{
+=======
+.counter {
+    background-color: rgba(83, 67, 240, 255);
+    text-align: center;
+    height: 350px;
+}
+
+.null {
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
     font-size: 65px;
     font-weight: 700;
 }
 
+<<<<<<< HEAD
 .counterpadding{
     color: #FFFFFF;
     padding: 75px 0px;
@@ -154,23 +275,59 @@ p{
     height: 215px;
     padding: 40px 0px;
   
+=======
+.nul {
+    font-size: 65px;
+    font-weight: 700;
+}
+
+.counterpadding {
+    color: #FFFFFF;
+    padding: 75px 0px;
+    font-weight: 800;
+
+
+}
+
+.line {
+    border-right-style: solid;
+    border-right-width: 3px;
+    height: 215px;
+    padding: 40px 0px;
+
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
 }
 
 /*********************************************8* servisec ***********************************************************/
 
+<<<<<<< HEAD
 .texts h1{
     color:rgba(83, 67, 240, 255);
+=======
+
+
+.texts h1 {
+    color: rgba(83, 67, 240, 255);
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
     text-align: center;
     margin: 70px 0px;
     font-weight: 700;
 }
 
+<<<<<<< HEAD
 .texts h1:hover{
+=======
+.texts h1:hover {
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
     color: black;
     text-decoration: underline;
 }
 
+<<<<<<< HEAD
 .imges img{
+=======
+.imges img {
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
     height: 80%;
     width: 60%;
     margin: 15px 100px;
@@ -182,10 +339,19 @@ p{
     /* background-color: #28aefa; */
     /* margin: 0px 20px; */
 }
+<<<<<<< HEAD
 .box1 h5 {
     color: #FFFFFF;
 }
 .box1 p{
+=======
+
+.box1 h5 {
+    color: #FFFFFF;
+}
+
+.box1 p {
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
     color: #FFFFFF;
 }
 
@@ -198,6 +364,7 @@ p{
     border-radius: 20px;
     /* margin: 0px 20px; 
 } */
+<<<<<<< HEAD
  
 
 .card-title{
@@ -215,11 +382,34 @@ p{
 }
 
 .btn .button:hover{
+=======
+
+
+
+.card-title {
+    text-align: center;
+    font-size: 30px;
+    padding: 10px 0px;
+    color: black;
+    font-weight: 900;
+}
+.card-text{
+    font-size: 20px;
+}
+
+.btn button {
+    margin: 15px 110px;
+
+}
+
+.btn .button:hover {
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
     background-color: #FFFFFF;
     color: black;
 }
 
 
+<<<<<<< HEAD
 /* about */
 
 .col-6 img{
@@ -238,3 +428,171 @@ p{
 
 
 
+=======
+/******************************** about ***************************/
+
+.col-6 img {
+    height: 80%;
+    width: 100%;
+
+}
+
+.col-6 h1 {
+    font-weight: 700;
+}
+
+.containt_text p {
+    font-size: 20px;
+}
+
+/********************************** process *********************************/
+
+.step p {
+    font-size: 23px;
+}
+
+/************************************ footer **********************/
+
+.footer-bg img {
+    background-image: url(/images/footer-bg.png);
+    background-size: cover;
+    height: 50%;
+    /* padding-top: 280px;
+    margin-top: -125px; */
+}
+
+/********************************** web **************************/
+.web_section {
+    background-color: rgba(83, 67, 240, 255);
+    height: 600px;
+
+}
+.web-offer{
+    background-color: rgb(242, 249, 247);
+    height: 550px;
+}
+
+.col-md-6 img {
+    height: 80%;
+    width: 100%;
+
+}
+
+.web-text {
+
+    padding-top: 100px;
+    font-weight: 800;
+    font-size: 70px;
+    color: white;
+
+}
+
+.img img {
+    padding-top: 30px;
+}
+.p-text p{
+    font-size: 20px;
+}
+.button {
+    /* background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%); */
+    background-color: rgba(83, 67, 240, 255);
+    border-radius: 8px;
+    border-style:solid;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    height: 4rem;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all .5s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-left: 10px;
+}
+
+
+.button:hover {
+    box-shadow: black 0 1px 30px;
+    transition-duration: 0.1s;
+}
+
+@media (min-width: 768px) {
+    .button {
+        padding: 0 2.6rem;
+    }
+}
+
+.btncontact {
+    background-color: white;
+    border-radius: 8px;
+    border: solid 2px black;
+    box-sizing: border-box;
+    color: rgba(83, 67, 240, 255);
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    height: 4rem;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all .5s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-left: 10px;
+}
+
+.btncontact:hover {
+    box-shadow: black 0 1px 30px;
+    transition-duration: 0.1s;
+}
+
+/******************************* error page *********************/
+
+
+.page_404 {
+    padding: 40px 0;
+    background: #fff;
+    font-family: 'Arvo', serif;
+}
+
+.page_404 img {
+    width: 100%;
+}
+
+.four_zero_four_bg {
+
+    background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 500px;
+    background-position: center;
+}
+
+
+.four_zero_four_bg h1 {
+    font-size: 80px;
+}
+
+.four_zero_four_bg h3 {
+    font-size: 80px;
+}
+
+.link_404 {
+    color: #fff !important;
+    padding: 10px 20px;
+    background: #39ac31;
+    margin: 20px 0;
+    display: inline-block;
+}
+
+.contant_box_404 {
+    margin-top: -50px;
+}
+>>>>>>> a69cbd580e83763d404df80c56d6cc025359536c
