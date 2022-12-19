@@ -278,13 +278,15 @@ p {
 }
 .web-text {
     
-    padding-top: 130px;
-    font-weight: 900;
+    padding-top: 100px;
+    font-weight: 800;
+    font-size: 50px;
     color:rgba(83, 67, 240, 255) ;
 
 }
+
 .img img{
-    padding-top: 80px;
+    padding-top: 30px;
 }
 
 /******************************* error page *********************/
