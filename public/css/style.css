@@ -276,15 +276,15 @@ p {
     width: 100%;
 
 }
-.web-text h1{
-    text-align: left;
-    padding-top: 120px;
-    font-weight: 700;
+.web-text {
+    
+    padding-top: 130px;
+    font-weight: 900;
     color:rgba(83, 67, 240, 255) ;
 
 }
 .img img{
-    padding-top: 100px;
+    padding-top: 80px;
 }
 
 /******************************* error page *********************/
