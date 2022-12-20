@@ -164,7 +164,10 @@ p {
 
 /*********************************************8* servisec ***********************************************************/
 
+.center{
+    text-align: center;
 
+}
 
 .texts h1 {
     color: rgba(83, 67, 240, 255);
@@ -218,7 +221,8 @@ p {
     color: black;
     font-weight: 900;
 }
-.card-text{
+
+.card-text {
     font-size: 20px;
 }
 
@@ -257,33 +261,38 @@ p {
 
 /************************************ footer **********************/
 
-.footer_section{
+.footer_section {
     background-color: rgba(83, 67, 240, 255);
     height: fit-content;
     color: white;
 
 }
- h5{
+
+h5 {
     font-weight: 800;
     font-size: 25px;
 
 }
-.nav-time li{
-    color:white;
-   
+
+.nav-time li {
+    color: white;
+
 }
-.decoration ul{
+
+.decoration ul {
     text-decoration: none;
 }
+
 /********************************** web **************************/
 .web_section {
     background-color: rgba(83, 67, 240, 255);
-    height:fit-content;
+    height: fit-content;
 
 }
-.web-offer{
+
+.web-offer {
     background-color: rgb(242, 249, 247);
-    height:fit-content;
+    height: fit-content;
     padding-bottom: 40px;
 
 }
@@ -306,14 +315,16 @@ p {
 .img img {
     padding-top: 30px;
 }
-.p-text p{
+
+.p-text p {
     font-size: 20px;
 }
+
 .button {
     /* background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%); */
     background-color: rgba(83, 67, 240, 255);
     border-radius: 8px;
-    border-style:solid;
+    border-style: solid;
     box-sizing: border-box;
     color: #FFFFFF;
     cursor: pointer;
@@ -374,15 +385,14 @@ p {
 /***************************** branding ************************/
 .branding_section {
     background-color: rgba(83, 67, 240, 255);
-    height:fit-content;
+    height: fit-content;
 
 }
-.branding-offer{
-    background-color: rgb(242, 249, 247);
-    height:fit-content;
-    width:1200px;
-    padding-bottom: 40px;
 
+.branding-offer {
+    background-color: rgb(242, 249, 247);
+    height: fit-content;
+    padding-bottom: 40px;
 }
 
 .col-md-6 img {
@@ -403,15 +413,17 @@ p {
 .img img {
     padding-top: 30px;
 }
-.p-text p{
+
+.p-text p {
     font-size: 20px;
     padding-top: 10px;
 }
+
 .button {
     /* background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%); */
     background-color: rgba(83, 67, 240, 255);
     border-radius: 8px;
-    border-style:solid;
+    border-style: solid;
     box-sizing: border-box;
     color: #FFFFFF;
     cursor: pointer;
@@ -468,6 +480,7 @@ p {
     box-shadow: black 0 1px 30px;
     transition-duration: 0.1s;
 }
+
 /******************************* error page *********************/
 
 
@@ -507,4 +520,14 @@ p {
 
 .contant_box_404 {
     margin-top: -50px;
+}
+
+/* *************************************footer-up****************************************/
+
+.footer-up-section {
+    background-color: rgb(242, 249, 247);
+    text-align: center;
+    padding-top: 40px;
+
+
 }

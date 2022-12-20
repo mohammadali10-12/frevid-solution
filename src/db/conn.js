@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Web = require('./model/web');
-
+const Branding = require('./model/branding');
+const Development = require('./model/development');
 
 const uri = 'mongodb://localhost:27017/Frevid_DB';
 
@@ -27,6 +28,23 @@ const connectWithDB = () => {
     //     imgUrl_2: "/static/images/web-1.webp",
     //     subTitle_2: "Custom Website Design",
     //     text: "Are you looking for a web design that is creative, simple, and attractive to your customers? Then Frevid solution just what you need."
+    //   }
+    // ])
+
+
+    // Branding.create([
+    //   {
+    //     imgUrl:"/static/images/branding-1.webp",
+    //     title:"Logo Design",
+    //     subTitle:"Logo Design is a logo creation, editing and revision service provider. We help you create or revise your logo to make it look professional and to stand out in the crowd."
+    //   }
+    // ])
+
+    // Development.create([
+    //   {
+    //     imgUrl: "/static/images/web-1.webp",
+    //     title: "Custom Website Development",
+    //     subTitle: "Let we collaborate with you to create a website that will attract more customers to your business. With our web design and development services, we guarantee that you’ll be 100% satisfied."
     //   }
     // ])
 

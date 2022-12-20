@@ -3,7 +3,9 @@ const express = require('express')
 
 const routers = express.Router()
 
-const Web = require('../db/model/web')
+const Web = require('../db/model/web');
+const Branding = require('../db/model/branding');
+const Development = require('../db/model/development');
 
 
 // all routes
@@ -21,15 +23,27 @@ routers.get('/service',(req,resp)=>{
 })
 
 routers.get('/service/web', async (req,resp)=>{
-    const webs = await Web.find()
+    const webs = await Web.find({})
 
     resp.render('web',{
         webs:webs
     })
 })
 
-routers.get('/service/branding',(req,resp)=>{
-    resp.render('branding')
+routers.get('/service/branding', async (req,resp)=>{
+    const Brandings = await Branding.find({})
+
+    resp.render('branding',{
+        Brandings:Brandings
+    })
+})
+
+routers.get('/service/web-development', async (req,resp)=>{
+    const Developments = await Development.find({})
+
+    resp.render('web-development',{
+        Developments:Developments
+    })
 })
 
 routers.get('*',(req,resp)=>{
