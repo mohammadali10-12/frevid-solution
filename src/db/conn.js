@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Demo = require('./model/Demo')
+const Web = require('./model/web');
 
 
 const uri = 'mongodb://localhost:27017/Frevid_DB';
@@ -19,14 +19,16 @@ mongoose.set('strictQuery', true);
 const connectWithDB = () => {
   mongoose.connect(uri, options, (err, db) => {
 
-    // Demo.create([
+    // Web.create([
     //   {
-
-    //     name: 'mohammad',
-    //     number: 9265533892,
-    //     address: 'vaghrol'
-    //   },
-    // ]);
+    //     imgUrl_1: "/static/images/web.webp",
+    //     subTitle_1: "Any business who is about to start, needs to get their online presence taken care of. This is achieved by having a website in place. Todays market demands a highly interactive website and not just a bunch of pages put together but a complete solution, in itself.",
+    //     title_2: "We Offer Website Design Services",
+    //     imgUrl_2: "/static/images/web-1.webp",
+    //     subTitle_2: "Custom Website Design",
+    //     text: "Are you looking for a web design that is creative, simple, and attractive to your customers? Then Frevid solution just what you need."
+    //   }
+    // ])
 
 
     if (err) console.error(err);

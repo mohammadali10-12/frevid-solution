@@ -3,6 +3,8 @@ const express = require('express')
 
 const routers = express.Router()
 
+const Web = require('../db/model/web')
+
 
 // all routes
 
@@ -18,8 +20,12 @@ routers.get('/service',(req,resp)=>{
     resp.render('service')
 })
 
-routers.get('/service/web',(req,resp)=>{
-    resp.render('web')
+routers.get('/service/web', async (req,resp)=>{
+    const webs = await Web.find()
+
+    resp.render('web',{
+        webs:webs
+    })
 })
 
 routers.get('/service/branding',(req,resp)=>{
