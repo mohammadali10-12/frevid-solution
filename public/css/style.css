@@ -252,28 +252,40 @@ p {
 /********************************** process *********************************/
 
 .step p {
-    font-size: 23px;
+    font-size: 20px;
 }
 
 /************************************ footer **********************/
 
-.footer-bg img {
-    background-image: url(/images/footer-bg.png);
-    background-size: cover;
-    height: 50%;
-    /* padding-top: 280px;
-    margin-top: -125px; */
-}
+.footer_section{
+    background-color: rgba(83, 67, 240, 255);
+    height: fit-content;
+    color: white;
 
+}
+ h5{
+    font-weight: 800;
+    font-size: 25px;
+
+}
+.nav-time li{
+    color:white;
+   
+}
+.decoration ul{
+    text-decoration: none;
+}
 /********************************** web **************************/
 .web_section {
     background-color: rgba(83, 67, 240, 255);
-    height: 600px;
+    height:fit-content;
 
 }
 .web-offer{
     background-color: rgb(242, 249, 247);
-    height: 550px;
+    height:fit-content;
+    padding-bottom: 40px;
+
 }
 
 .col-md-6 img {
