@@ -237,11 +237,14 @@ p {
 }
 .site-footer hr {
     border-top-color: #bbb;
-    opacity: 0.5
+    opacity: 0.5;
+    padding: 15px;
+    
 }
 
 .site-footer hr.small {
-    margin: 20px 0
+    margin: 20px 0;
+    
 }
 
 .site-footer h4 {
@@ -306,7 +309,8 @@ p {
 }
 
 .copyright-text {
-    margin: 0
+    margin: 10px;
+    font-size:15px ;
 }
 
 @media (max-width:991px) {
@@ -379,16 +383,16 @@ p {
     background-color: #3b5998
 }
 
-.social-icons a.twitter:hover {
-    background-color: #00aced
+.social-icons a.instagram:hover {
+    background-color: rgb(150,47,191);
 }
 
 .social-icons a.linkedin:hover {
     background-color: #007bb6
 }
 
-.social-icons a.dribbble:hover {
-    background-color: #ea4c89
+.social-icons a.whatsapp:hover {
+    background-color: 	#25D366
 }
 
 @media (max-width:767px) {
