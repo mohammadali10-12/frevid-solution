@@ -162,79 +162,34 @@ p {
 
 }
 
-/*********************************************8* servisec ***********************************************************/
+/*********************************************8* services ***********************************************************/
 
-.center{
+.center h4 {
     text-align: center;
-
+    font-weight: 800;
 }
 
-.texts h1 {
+.texts span {
     color: rgba(83, 67, 240, 255);
-    text-align: center;
-    margin: 70px 0px;
+
+    padding-top: 60px;
     font-weight: 700;
+    font-size: 50px;
 }
 
-.texts h1:hover {
+.texts span:hover {
     color: black;
-    text-decoration: underline;
-}
 
-.imges img {
-    height: 80%;
-    width: 60%;
-    margin: 15px 100px;
-}
-
-.box1 {
-    box-shadow: rgba(83, 67, 240, 255) 0 1px 10px;
-    background-color: #7e71f4;
-    /* background-color: #28aefa; */
-    /* margin: 0px 20px; */
-}
-
-.box1 h5 {
-    color: #FFFFFF;
-}
-
-.box1 p {
-    color: #FFFFFF;
-}
-
-
-/* .box1:hover{
-    background-color:rgba(83, 67, 240, 255);
-    border: 5px solid white;
-    color: #FFFFFF;
-    box-shadow: rgba(83, 67, 240, 255) 0 1px 20px;
-    border-radius: 20px;
-    /* margin: 0px 20px; 
-} */
-
-
-
-.card-title {
-    text-align: center;
-    font-size: 30px;
-    padding: 10px 0px;
-    color: black;
-    font-weight: 900;
 }
 
 .card-text {
     font-size: 20px;
+    padding-top: 20px;
 }
 
-.btn button {
-    margin: 15px 110px;
 
-}
 
-.btn .button:hover {
-    background-color: #FFFFFF;
-    color: black;
-}
+
 
 
 /******************************** about ***************************/

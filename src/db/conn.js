@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Web = require('./model/web');
 const Branding = require('./model/branding');
 const Development = require('./model/development');
+const Service = require('../db/model/service');
 
 const uri = 'mongodb://localhost:27017/Frevid_DB';
 
@@ -47,6 +48,16 @@ const connectWithDB = () => {
     //     subTitle: "Let we collaborate with you to create a website that will attract more customers to your business. With our web design and development services, we guarantee that you’ll be 100% satisfied."
     //   }
     // ])
+
+    // Service.create([
+    //   {
+    //     imgUrl:"/static/images/service-1.webp",
+    //     title:"Web Design",
+    //     subTitle:"Some quick example text to build on the card title and make up the bulk of the card's content.",
+    //     link:"/service/web"
+    //   }
+    // ])
+
 
 
     if (err) console.error(err);
