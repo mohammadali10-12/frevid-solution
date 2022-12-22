@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
-const Demo = require('./model/Demo')
-
+const Web = require('./model/web');
+const Branding = require('./model/branding');
+const Development = require('./model/development');
+const Service = require('../db/model/service');
 
 const uri = 'mongodb://localhost:27017/Frevid_DB';
 
@@ -19,14 +21,43 @@ mongoose.set('strictQuery', true);
 const connectWithDB = () => {
   mongoose.connect(uri, options, (err, db) => {
 
-    // Demo.create([
+    // Web.create([
     //   {
+    //     imgUrl_1: "/static/images/web.webp",
+    //     subTitle_1: "Any business who is about to start, needs to get their online presence taken care of. This is achieved by having a website in place. Todays market demands a highly interactive website and not just a bunch of pages put together but a complete solution, in itself.",
+    //     title_2: "We Offer Website Design Services",
+    //     imgUrl_2: "/static/images/web-1.webp",
+    //     subTitle_2: "Custom Website Design",
+    //     text: "Are you looking for a web design that is creative, simple, and attractive to your customers? Then Frevid solution just what you need."
+    //   }
+    // ])
 
-    //     name: 'mohammad',
-    //     number: 9265533892,
-    //     address: 'vaghrol'
-    //   },
-    // ]);
+
+    // Branding.create([
+    //   {
+    //     imgUrl:"/static/images/branding-1.webp",
+    //     title:"Logo Design",
+    //     subTitle:"Logo Design is a logo creation, editing and revision service provider. We help you create or revise your logo to make it look professional and to stand out in the crowd."
+    //   }
+    // ])
+
+    // Development.create([
+    //   {
+    //     imgUrl: "/static/images/web-1.webp",
+    //     title: "Custom Website Development",
+    //     subTitle: "Let we collaborate with you to create a website that will attract more customers to your business. With our web design and development services, we guarantee that you’ll be 100% satisfied."
+    //   }
+    // ])
+
+    // Service.create([
+    //   {
+    //     imgUrl:"/static/images/service-1.webp",
+    //     title:"Web Design",
+    //     subTitle:"Some quick example text to build on the card title and make up the bulk of the card's content.",
+    //     link:"/service/web"
+    //   }
+    // ])
+
 
 
     if (err) console.error(err);
