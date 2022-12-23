@@ -15,5 +15,14 @@
     "express": "^4.18.2",
     "hbs": "^4.2.0",
     "mongoose": "^6.8.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohammadali-git/frevid-solution.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Mohammadali-git/frevid-solution/issues"
+  },
+  "homepage": "https://github.com/Mohammadali-git/frevid-solution#readme"
 }
