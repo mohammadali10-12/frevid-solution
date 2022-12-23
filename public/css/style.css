@@ -41,9 +41,9 @@ nav {
 /***********************************8 home *******************************************/
 
 
-.col-7 img {
-    height: 80%;
-    width: 100%;
+.home-image img {
+    height: 90%;
+    width: 96%;
 }
 
 .heading {
@@ -217,6 +217,16 @@ p {
 }
 
 /************************************ footer **********************/
+
+.footer{
+    border-right-style: solid;
+    border-right-width: 1px;
+    padding: 0px 65px;
+}
+.footers{
+    padding: 0px 65px;
+
+}
 
 .site-footer {
     background-color: #5b6590;
