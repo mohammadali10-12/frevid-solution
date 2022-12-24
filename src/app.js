@@ -3,13 +3,13 @@ const app = express();
 
 
 
-// require('./db/conn');
+require('./db/conn');
 
 const bodyParser = require('body-parser');
 
 const hbs = require('hbs');
 
-const port = process.env.PORT || 4400
+const port = process.env.PORT || 4200
 
 const routers = require('./routes/main');
 
