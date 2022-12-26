@@ -3,7 +3,7 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
     /* font-family: 'poiret One', 'cursive'; */
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
     /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
 }
@@ -219,12 +219,13 @@ p {
 
 /************************************ footer **********************/
 
-.footer{
+.footer {
     border-right-style: solid;
     border-right-width: 1px;
     padding: 0px 65px;
 }
-.footers{
+
+.footers {
     padding: 0px 65px;
 
 }
@@ -235,27 +236,30 @@ p {
     font-size: 20px;
 
     line-height: 24px;
-    color:white;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
-.site-footer span{
+
+.site-footer span {
     font-size: 15px;
     line-height: 1em;
 }
-.site-footer h5:hover{
+
+.site-footer h5:hover {
     color: #9ca6ba;
 }
+
 .site-footer hr {
     border-top-color: #bbb;
     opacity: 0.5;
     padding: 15px;
-    
+
 }
 
 .site-footer hr.small {
     margin: 20px 0;
-    
+
 }
 
 .site-footer h4 {
@@ -290,7 +294,7 @@ p {
 
 .footer-links a {
     color: #eef0f1;
-    text-decoration: none ;
+    text-decoration: none;
 
 }
 
@@ -321,7 +325,7 @@ p {
 
 .copyright-text {
     margin: 10px;
-    font-size:15px ;
+    font-size: 15px;
 }
 
 @media (max-width:991px) {
@@ -395,7 +399,7 @@ p {
 }
 
 .social-icons a.instagram:hover {
-    background-color: rgb(150,47,191);
+    background-color: rgb(150, 47, 191);
 }
 
 .social-icons a.linkedin:hover {
@@ -403,7 +407,7 @@ p {
 }
 
 .social-icons a.whatsapp:hover {
-    background-color: 	#25D366
+    background-color: #25D366
 }
 
 @media (max-width:767px) {
@@ -665,115 +669,129 @@ p {
 
 /*-------------------our-work----------------*/
 
-.ourwork{
-    background-color:  rgb(242, 249, 247);
-}
-.ourwork-text{
-    padding-top: 60px;
+.ourwork {
+    background-color: rgb(242, 249, 247);
+    /* background-color: rgba(83, 67, 240, 255); */
+    margin-top: 40px;
+    padding-top: 35px;
+    padding-bottom: 40px;
 }
 
-.ourwork-text h1{
+.ourwork-text {
+    padding-top: 20px;
+}
+
+.ourwork-text h1 {
     font-size: 55px;
     font-weight: 700;
-    padding: 3px 0px;
+    padding: 10px 0px;
+
     color: rgba(83, 67, 240, 255);
 }
 
-.ourwork-box{
-    padding: 3px 0px;
+.ourwork-box {
+    padding: 10px 0px;
 }
-.ourwork-box span{
+
+.ourwork-box span {
     border: 1.5px solid black;
     border-radius: 3px;
     padding: 2px 5px;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
-.ourwork-text p{
-    padding-top:10px;
-    font-size: 25px;
+.ourwork-text p {
+    padding-top: 13px;
+    font-size: 20px;
     font-weight: 400;
 }
 
 .ourwork-btn {
-  background-color:rgba(83, 67, 240, 255);
-  border: 1px solid transparent;
-  border-radius: 3px;
-  box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.15385;
-  margin: 0;
-  outline: none;
-  padding: 8px .8em;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  white-space: nowrap;
+    background-color: rgba(83, 67, 240, 255);
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: rgba(255, 255, 255, .4) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .9em;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
 }
 
 .ourwork-btn:hover,
 .ourwork-btn:focus {
-  background-color: #FFFFFF;
-  color: rgba(83, 67, 240, 255);
-  border: 1.5px solid rgba(83, 67, 240, 255);
-  border-radius: 3px;
-  font-weight: 800;
+    background-color: #FFFFFF;
+    color: rgba(83, 67, 240, 255);
+    border: 1.5px solid rgba(83, 67, 240, 255);
+    border-radius: 3px;
+    font-weight: 800;
 }
 
 .ourwork-btn:focus {
-  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
 }
 
 .ourwork-btn:active {
-  background-color: #0064bd;
-  box-shadow: none;
+    background-color: #0064bd;
+    box-shadow: none;
 }
-.ourwork-img img{
-    width:100%;
+
+.ourwork-img img {
+
+    width: 90%;
+    padding-bottom: 20px;
 }
 
 /*---------------------- technologies--------------- */
 
-.Technologies{
-    background-color:rgba(83, 67, 240, 255) ;
+.Technologies {
+    /* background-color: rgba(83, 67, 240, 255); */
     padding: 20px 0px;
     padding: 40px 0px;
 }
 
-.technologies-text h4{
-    
-    color: #FFFFFF;
+.technologies-text h4 {
+
+    color: rgba(83, 67, 240, 255);
     text-align: center;
+    padding-top: 50px;
+    font-weight: 700;
 }
 
-.technologies-text h1{
-    
+.technologies-text h1 {
+
     text-align: center;
     font-weight: 700;
     font-size: 55px;
 }
-.technologies-img{
-    padding: 15px 0px;
+
+.technologies-img {
+    padding: 50px 0px;
     margin-left: 30px;
 }
 
-.technologies-img img{
+.technologies-img img {
     background-color: #FFFFFF;
-    border: 1.5px solid ;
+    border: 1.5px solid;
     border-radius: 50%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     width: 90%;
-    
-}
 
+}
