@@ -203,8 +203,8 @@ p {
 
 }
 
-.col-6 h1 {
-    font-weight: 700;
+.col-md-6 h1 {
+    font-weight: 800;
 }
 
 .containt_text p {
