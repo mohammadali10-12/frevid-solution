@@ -811,3 +811,12 @@ p {
     color: white;
 
 }
+.form-bg{
+    background-color:rgba(83, 67, 240, 255) ;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+.map{
+    margin-top: 30px;
+}

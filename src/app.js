@@ -25,7 +25,6 @@ app.use('/', routers)
 
 
 
-
 //templet engine
 
 app.set('view engine', 'hbs');
