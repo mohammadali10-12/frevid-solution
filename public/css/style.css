@@ -80,7 +80,7 @@ p {
     font-size: 25px;
     font-weight: 500;
     height: 4rem;
-    padding: 0 1.6rem;
+    padding: 20px 0px;
     text-align: center;
     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
     transition: all .5s;
@@ -468,7 +468,8 @@ p {
     font-size: 25px;
     font-weight: 500;
     height: 4rem;
-    padding: 0 1.6rem;
+    padding:20px 0px;
+    padding-top: 100px;
     text-align: center;
     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
     transition: all .5s;
@@ -793,5 +794,20 @@ p {
     border-radius: 50%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     width: 90%;
+
+}
+/***************************** contact ***************************/
+.contact_section {
+    background-color: rgba(83, 67, 240, 255);
+    height: fit-content;
+    padding: 100px 0px;
+
+}
+.contact-text {
+
+    padding-top: 100px;
+    font-weight: 800;
+    font-size: 70px;
+    color: white;
 
 }

@@ -51,6 +51,10 @@ routers.get('/service/web-development', async (req, resp) => {
     })
 })
 
+routers.get('/contact',(req,resp)=>{
+    resp.render('contact');
+})
+
 routers.get('*', (req, resp) => {
     resp.render('error')
 })
