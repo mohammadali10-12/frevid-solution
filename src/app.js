@@ -13,6 +13,8 @@ const port = process.env.PORT || 4200
 
 const routers = require('./routes/main');
 
+app.use(express.json());
+app.use(express.urlencoded({extended:false}))
 app.use('/static', express.static('public'));
 app.use('/', routers)
 

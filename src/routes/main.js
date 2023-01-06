@@ -7,6 +7,7 @@ const Web = require('../db/model/web');
 const Branding = require('../db/model/branding');
 const Development = require('../db/model/development');
 const Service = require('../db/model/service');
+const User = require ('../db/model/contact');
 
 
 // all routes
@@ -53,6 +54,23 @@ routers.get('/service/web-development', async (req, resp) => {
 
 routers.get('/contact',(req,resp)=>{
     resp.render('contact');
+})
+
+routers.post('/form-submit', async (req,resp)=>{
+    try {
+
+     
+        console.log(req.body.name);
+        // const data = await User.create(req.body)
+        // await data;
+        resp.status(201).redirect('/')
+        console.log('form is submited');
+        
+      } catch (e) {
+        resp.status(500).send(e);
+        resp.redirect('/')
+      }
+
 })
 
 routers.get('*', (req, resp) => {

@@ -61,51 +61,55 @@
       <div class="row">
 
         <div class="col  ">
+          <form action="/form-submit" method="post">
+            <div class="row form-bg">
+              <div class="contact-form-title">
+                <h1>Send Us A Massage</h1>
+              </div>
 
-          <div class="row form-bg">
-            <div class="contact-form-title">
-              <h1>Send Us A Massage</h1>
-            </div>
+              <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label">Name</label>
+                <input type="text" class="form-control " id="exampleFormControlInput1" placeholder="Name" required
+                  name="name">
+              </div>
+              <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+                  required name="email">
+              </div>
+              <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label">Number</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Number" required
+                  name="number">
+              </div>
+              <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label">Services</label>
+                <select class="form-select" aria-label="Default select example" required name="select">
+                  <option selected>---select Service---</option>
+                  <option name="select" value="Web-Design">Web-Design</option>
+                  <option name="select" value="Branding">Branding</option>
+                  <option name="select" value="Web-Development">Web-Development</option>
+                </select>
+              </div>
 
-            <div class="mb-3 col-6">
-              <label for="exampleFormControlInput1" class="form-label">Name</label>
-              <input type="email" class="form-control " id="exampleFormControlInput1" placeholder="Name">
-            </div>
-            <div class="mb-3 col-6">
-              <label for="exampleFormControlInput1" class="form-label">Email</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-            </div>
-            <div class="mb-3 col-6">
-              <label for="exampleFormControlInput1" class="form-label">Number</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Number">
-            </div>
-            <div class="mb-3 col-6">
-              <label for="exampleFormControlInput1" class="form-label">Services</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>---select Service---</option>
-                <option value="Web-Design">Web-Design</option>
-                <option value="Branding">Branding</option>
-                <option value="Web-Development">Web-Development</option>
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">message</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="message" rows="3"></textarea>
-            </div>
-            <div class="mb-3 submit-button">
-              <!-- HTML !-->
-              <button class="btn btn-primary" role="button">Submit</button>
-            </div>
-          </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="message" rows="3"
+                  name="message"></textarea>
+              </div>
+              <div class="mb-3 submit-button">
+                <button class="btn btn-primary" role="button">Submit</button>
+          </form>
         </div>
-
-        <div class="col">
-
-        </div>
-
-
       </div>
+    </div>
+
+    <div class="col">
+
+    </div>
+
+
+    </div>
   </section>
   {{!-- --}}
 
