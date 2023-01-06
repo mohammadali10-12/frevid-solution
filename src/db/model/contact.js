@@ -22,7 +22,11 @@ const contactSchema = mongoose.Schema({
     message: {
         type: String,
 
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 })
 
-module.exports = mongoose.model('userdetail',contactSchema);
+module.exports = mongoose.model('userdetail', contactSchema);
