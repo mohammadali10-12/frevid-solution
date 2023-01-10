@@ -11,20 +11,13 @@
             {{#each data}}
 
             <div class="col-md-4  col-sm-12 col-xl-4 col-xxl-4 " style="padding-top:25px;padding-bottom:30px; ">
-
-
-                <div style="">
-
-                    <div class="card container" style="width: 25rem;height:500px">
-                        <a href="{{this.link}}">
-                            <img src="{{this.imgUrl}}" class="img-fluid" alt="...">
-                        </a>
-                        <div class="card-body p-3 center ">
-                            <h4>{{this.title}}</h4>
-                            <p class="card-text" style="text-align:center;">{{this.subTitle}}</p>
-
-
-                        </div>
+                <div class="card container" style="height:550px">
+                    <a href="{{this.link}}">
+                        <img src="{{this.imgUrl}}" class="img-fluid" alt="...">
+                    </a>
+                    <div class="card-body p-3 center ">
+                        <h4>{{this.title}}</h4>
+                        <p class="card-text" style="text-align:center;">{{this.subTitle}}</p>
                     </div>
                 </div>
             </div>

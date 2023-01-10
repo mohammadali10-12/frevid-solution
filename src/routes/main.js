@@ -56,6 +56,10 @@ routers.get('/contact', (req, resp) => {
     resp.render('contact');
 })
 
+routers.get('/ourwork',(req,resp)=>{
+    resp.render('ourwork');
+})
+
 routers.post('/form-submit', async (req, resp) => {
     try {
 
