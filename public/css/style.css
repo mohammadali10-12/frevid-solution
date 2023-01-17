@@ -55,12 +55,13 @@ nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content:center;
 }
 
 .heading {
     font-weight: 700;
     font-size: 45px;
+    
 }
 
 p {
@@ -75,6 +76,7 @@ p {
 .t {
     color: rgba(83, 67, 240, 255);
     font-size: 50px;
+    margin-right: 4rem;
 }
 
 /*.button {
@@ -468,7 +470,7 @@ p {
 
 }
 
-.img img {
+.web_img img {
     padding-top: 30px;
 }
 
@@ -489,7 +491,7 @@ p {
     font-size: 25px;
     font-weight: 500;
     height: 4rem;
-    padding: 20px 0px;
+    padding: 10px 0px;
     padding-top: 100px;
     text-align: center;
     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
@@ -567,7 +569,7 @@ p {
 
 }
 
-.img img {
+.branding_img img {
     padding-top: 30px;
 }
 
