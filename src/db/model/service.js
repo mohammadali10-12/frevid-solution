@@ -7,4 +7,7 @@ const serviceSchema = mongoose.Schema({
     link:String
 })
 
+
+
+
 module.exports = mongoose.model('service',serviceSchema);
