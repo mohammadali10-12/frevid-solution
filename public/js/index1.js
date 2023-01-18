@@ -1,6 +1,6 @@
 
  var typingEffect = new Typed(".multitext",{
-     strings : ["Website-Design","Logo-Design","UI/UX-Design"] ,
+     strings : ["Website-Design","Logo-Design","UI/UX-Design",] ,
      loop : true,
      typeSpeed : 80,
      backSpeed : 80,
@@ -46,25 +46,3 @@
     },duration);
  });
 
-//  const counters = document.querySelectorAll('.counter');
-//  const speed = 100;
-
-//  counters.forEach(counter => {
-//     const updateCount = () =>{
-//         const target = +counter.getAttribute('data-target');
-//         const count = +counter.innerText;
-
-//         const inc = target / speed;
-
-//         console.log (count);
-
-//         if (count < target) {
-//             counter.innerText = count + inc;
-//             setTimeout(updateCount, 1);
-//         }
-//         else{
-//             count.innerText = target;
-//         }
-//     }
-//     updateCount();
-//  });
