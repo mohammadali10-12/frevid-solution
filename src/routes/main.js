@@ -8,6 +8,8 @@ const Branding = require('../db/model/branding');
 const Development = require('../db/model/development');
 const Service = require('../db/model/service');
 const User = require('../db/model/contact');
+const ourWork = require('../db/model/ourwork');
+
 
 
 // all routes
@@ -56,8 +58,11 @@ routers.get('/contact', (req, resp) => {
     resp.render('contact');
 })
 
-routers.get('/ourwork',(req,resp)=>{
-    resp.render('ourwork');
+routers.get('/ourwork',async (req,resp)=>{
+const workDetail = await ourWork.find({}) 
+    resp.render('ourwork',{
+      ourWork:workDetail
+});
 })
 
 routers.post('/form-submit', async (req, resp) => {

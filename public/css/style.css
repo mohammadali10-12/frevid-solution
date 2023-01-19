@@ -192,13 +192,22 @@ nav {
 
 
 /*********************************************8* services ***********************************************************/
-/* .service-flex{
+.service-flex {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-content: space-around;
-} */
+    justify-content: center;
+    gap: 25px;
+}
+
+.service-img {
+    width: 70%;
+}
+
+.service-box {
+    width: 25rem;
+    align-self: flex-end;
+}
+
 .center h4 {
     text-align: center;
     font-weight: 800;
@@ -470,12 +479,13 @@ nav {
 .p-text p {
     font-size: 20px;
 }
+
 .button {
-    background-color:  rgba(83, 67, 240, 255) ;
+    background-color: rgba(83, 67, 240, 255);
     border-radius: 8px;
     border: solid 2px black;
     box-sizing: border-box;
-    color:#FFFFFF;
+    color: #FFFFFF;
     cursor: pointer;
     flex-shrink: 0;
     font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -628,6 +638,12 @@ nav {
     font-weight: 400;
 }
 
+.ourwork-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
 
 .ourwork-img img {
 
@@ -639,9 +655,9 @@ nav {
     width: 300px;
     height: 300px;
     overflow: hidden;
-    margin: 50px auto;
-    border-radius: 10%;
-    border-top-left-radius: 10%;
+    margin: 30px auto;
+    border-radius: 8%;
+    box-shadow: black 0px 0px 30px;
 
 }
 
@@ -650,12 +666,26 @@ nav {
     height: 100%;
     object-fit: cover;
     object-position: top center;
-    transition: all 1s ease-in-out;
+    transition: all 4.5s ease-in;
+
+
 }
 
 .img:hover img {
     object-position: bottom center;
 }
+
+.web-link a {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.ourwork-title {
+    margin: 10px 0px;
+    font-weight: bold;
+
+}
+
 
 /*---------------------- technologies--------------- */
 .wrap {
@@ -693,7 +723,7 @@ nav {
     width: 230px;
     display: flex;
     justify-content: center;
-   
+
 }
 
 .technologies-img img {
@@ -746,9 +776,11 @@ nav {
 .form-select {
     background-color: #c9d3ff;
 }
+
 .map {
     margin-top: 30px;
 }
+
 .submit-button {
     padding: 20px 15px;
 }

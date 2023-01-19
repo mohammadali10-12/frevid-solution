@@ -3,26 +3,25 @@
 
         <span>Our-Services</span>
     </div>
-    <div class="container">
 
-        <div class="row">
+    <div class="service-flex">
 
 
-            {{#each data}}
+        {{#each data}}
 
-            <div class="col-md-4  col-sm-12 col-xl-4 col-xxl-4 " style="padding-top:25px;padding-bottom:30px; ">
-                <div class="card container" style="height:550px">
-                    <a href="{{this.link}}">
-                        <img src="{{this.imgUrl}}" class="img-fluid" alt="...">
-                    </a>
-                    <div class="card-body p-3 center ">
-                        <h4>{{this.title}}</h4>
-                        <p class="card-text" style="text-align:center;">{{this.subTitle}}</p>
-                    </div>
+        <div class="service-box">
+            <div class="card container" style="height:420px">
+                <a href="{{this.link}}">
+                    <img src="{{this.imgUrl}}" class="service-img" alt="...">
+                </a>
+                <div class="card-body p-3 center ">
+                    <h4>{{this.title}}</h4>
+                    <p class="card-text" style="text-align:center;">{{this.subTitle}}</p>
                 </div>
             </div>
-            {{/each}}
-
-
         </div>
+        {{/each}}
+
+    </div>
+
 </section>

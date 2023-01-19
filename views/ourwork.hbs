@@ -17,26 +17,29 @@
     {{>navbar}}
     <section id="ourwork-section">
 
-        <div class="container">
-            <div class="row">
+        <div class="ourwork-flex">
 
-                <div style="width: 25rem;">
-                    <div class="img" style="height: 400px; overflow-y: scroll:hidden; width: 100%;">
-                        <img src="static/images/ourwork-1.webp" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+            {{#each ourWork}}
+            <div class="flex-wrap" style="width: 27rem;">
+                <div class="img" style="height: 450px; overflow-y: scroll:hidden; width: 100%;">
+                    <img src={{this.imgUrl}} class="card-img-top" alt="">
                 </div>
+                <div class="card-body">
+                    <h3 class="card-title ourwork-title ">{{this.title}}</h3>
 
+
+                    <a href={{this.siteLink}} class="web-link" style="margin-bottom: 20px;">visit website>></a>
+                </div>
             </div>
+            {{/each}}
+
+
+
         </div>
 
     </section>
-    {{>tagline}}
+    <div style="margin-top:50px;"> {{>tagline}}</div>
+
     {{>footer}}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
