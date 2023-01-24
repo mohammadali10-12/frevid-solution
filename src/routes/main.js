@@ -9,6 +9,7 @@ const Development = require('../db/model/development');
 const Service = require('../db/model/service');
 const User = require('../db/model/contact');
 const ourWork = require('../db/model/ourwork');
+const signUp = require('../db/model/sign-up');
 
 
 
@@ -58,11 +59,42 @@ routers.get('/contact', (req, resp) => {
     resp.render('contact');
 })
 
-routers.get('/ourwork',async (req,resp)=>{
-const workDetail = await ourWork.find({}) 
-    resp.render('ourwork',{
-      ourWork:workDetail
-});
+routers.get('/ourwork', async (req, resp) => {
+    const workDetail = await ourWork.find({})
+    resp.render('ourwork', {
+        ourWork: workDetail
+    });
+})
+
+routers.get('/sign-up', (req, resp) => {
+    resp.render('sign-up')
+})
+
+routers.post('/sign-up', async (req, resp) => {
+    try {
+
+        const password = req.body.password;
+        const cpassword = req.body.cpassword;
+
+        if (password === cpassword) {
+
+            const signUpData = new signUp ({
+                name: req.body.name,
+                email: req.body.email,
+                password: password,
+                cpassword: cpassword
+            })
+            const register = await signUpData.save();
+            resp.status(201).redirect('/');
+
+        } else {
+            resp.json('password are not matching')
+        }
+
+
+    } catch (error) {
+        resp.status(400).send(error)
+    }
 })
 
 routers.post('/form-submit', async (req, resp) => {
@@ -79,7 +111,7 @@ routers.post('/form-submit', async (req, resp) => {
         const data = await contact.save()
 
         resp.status(201).redirect('/')
-        console.log('form is submited');
+
 
     } catch (e) {
         resp.status(500).send(e);
