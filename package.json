@@ -16,6 +16,7 @@
     "express-hbs": "^2.4.0",
     "hbs": "^4.2.0",
     "mongoose": "^6.8.0",
+    "node-modules": "^1.0.1",
     "nodemon": "^2.0.20"
   },
   "repository": {
