@@ -24,7 +24,6 @@
 
 <body>
 
-
 {{>navbar}}
 
     <section class="vh-100" style="background-color: #eee;">
@@ -38,16 +37,9 @@
 
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                                    <form class="mx-1 mx-md-4" action="/sign-up" method="post">
+                                    <form class="mx-1 mx-md-4" action="/login" method="post">
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="text" id="form3Example1c" placeholder="Your Name"
-                                                    class="form-control" required name="name" />
-
-                                            </div>
-                                        </div>
+                                        
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
@@ -65,14 +57,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                            <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="form3Example4cd"
-                                                    placeholder="Repeat your password" class="form-control" required
-                                                    name="cpassword" />
-                                            </div>
-                                        </div>
+                                       
 
                                         <div class="form-check d-flex justify-content-center mb-5">
                                             <input class="form-check-input me-2" type="checkbox" value=""
@@ -83,7 +68,7 @@
                                         </div>
 
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                                            <button type="submit" class="btn btn-primary btn-lg">login</button>
                                         </div>
 
                                     </form>
@@ -102,8 +87,8 @@
             </div>
         </div>
     </section>
-
 {{>footer}}
+
 
 
 

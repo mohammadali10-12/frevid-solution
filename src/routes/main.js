@@ -78,14 +78,14 @@ routers.post('/sign-up', async (req, resp) => {
 
         if (password === cpassword) {
 
-            const signUpData = new signUp ({
+            const signUpData = new signUp({
                 name: req.body.name,
                 email: req.body.email,
                 password: password,
                 cpassword: cpassword
             })
             const register = await signUpData.save();
-            resp.status(201).redirect('/');
+            resp.status(201).redirect('/login');
 
         } else {
             resp.json('password are not matching')
@@ -95,6 +95,29 @@ routers.post('/sign-up', async (req, resp) => {
     } catch (error) {
         resp.status(400).send(error)
     }
+})
+
+routers.get('/login', (req, resp) => {
+    resp.render('login')
+})
+
+routers.post('/login', async (req,resp)=>{
+try {
+
+const email=req.body.email;
+const password=req.body.password;
+
+ const userdetail=await signUp.findOne({email:email});
+
+if(password===password){
+resp.status(201).redirect('/')   
+}else{
+resp.status(400).send('login detail is wrong');
+}
+    
+} catch (error) {
+resp.status(400).send(error);
+}
 })
 
 routers.post('/form-submit', async (req, resp) => {
