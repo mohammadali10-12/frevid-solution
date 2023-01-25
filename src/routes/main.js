@@ -2,6 +2,8 @@ const { Router } = require('express/lib/application')
 const express = require('express')
 
 const routers = express.Router()
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const Web = require('../db/model/web');
 const Branding = require('../db/model/branding');
@@ -83,11 +85,16 @@ routers.post('/sign-up', async (req, resp) => {
                 email: req.body.email,
                 password: password,
                 cpassword: cpassword
-            })
+            });
+
+            const token = await signUpData.genrateToken();
+           
+
             const register = await signUpData.save();
             resp.status(201).redirect('/login');
 
-        } else {
+        }
+        else {
             resp.json('password are not matching')
         }
 
@@ -101,23 +108,28 @@ routers.get('/login', (req, resp) => {
     resp.render('login')
 })
 
-routers.post('/login', async (req,resp)=>{
-try {
+routers.post('/login', async (req, resp) => {
+    try {
 
-const email=req.body.email;
-const password=req.body.password;
+        const email = req.body.email;
+        const password = req.body.password;
 
- const userdetail=await signUp.findOne({email:email});
+        const userdetail = await signUp.findOne({ email: email });
 
-if(userdetail.password===password){
-resp.status(201).redirect('/')   
-}else{
-resp.status(400).send('login detail is wrong');
-}
-    
-} catch (error) {
-resp.status(400).send(error);
-}
+        const isMatch = await bcrypt.compare(password, userdetail.password);
+
+        const token = await userdetail.genrateToken();
+        
+        if (isMatch) {
+
+            resp.status(201).redirect('/')
+        } else {
+            resp.status(400).send('login detail is wrong');
+        }
+
+    } catch (error) {
+        resp.status(400).send(error);
+    }
 })
 
 routers.post('/form-submit', async (req, resp) => {

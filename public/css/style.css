@@ -755,13 +755,13 @@ nav {
 
 .contact-form-title h1 {
     font-size: 50px;
-    color: rgb(194, 225, 253);
+    color:rgba(83, 67, 240, 255);
     font-weight: 800;
     padding: 20px 0px;
 }
 
 .form-bg {
-    background-color: rgba(83, 67, 240, 255);
+    background-color: whitesmoke;
     margin-top: 30px;
     margin-bottom: 30px;
     color: black;
@@ -769,7 +769,30 @@ nav {
     font-weight: 600;
     border-radius: 20px;
     padding: 30px 40px;
+    box-shadow: 3px 3px 10px black;
+  
 
+}
+.contact_text{
+    color: #33353d;
+    text-align: justify;
+    margin-top: 70px;
+    
+
+}
+.contact-text-p{
+    color: rgba(83, 67, 240, 255);
+    font-weight: bold;
+    font-size: 25px;
+    padding: 10px 0px;
+}
+.contact-details{
+    font-size:20px;
+    font-weight: 500;
+}
+.contact-header h1{
+    font-size: 50px;
+    font-weight: 700;
 }
 
 .form-control,
@@ -783,4 +806,10 @@ nav {
 
 .submit-button {
     padding: 20px 15px;
+}
+.sing-up{
+    background-color: white;
+    margin: 20px 0px;
+    border: 1px solid black;
+    box-shadow:  3px 3px 10px black;
 }
