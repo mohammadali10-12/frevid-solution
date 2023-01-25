@@ -110,7 +110,7 @@ const password=req.body.password;
 
  const userdetail=await signUp.findOne({email:email});
 
-if(password===password){
+if(password===password ){
 resp.status(201).redirect('/')   
 }else{
 resp.status(400).send('login detail is wrong');
