@@ -22,7 +22,7 @@
 
         <div class="container">
             <div class="row justify">
-                <div class=" container  col-md-5  col-sm-5 col-xl-5">
+                <div class=" container  col-md-12   col-sm-12 col-xl-6 col-lg-6 col-xxl-6">
                     <div class="branding-text">
                         <h1 style="font-weight:bolder;font-size: 48px;">Website Development </h1>
                         <h1 style="font-weight:bolder;font-size: 48px;">Company in Ahmedabad</h1>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
 
-                <div class=" container development_img col-md-6  col-sm-6 col-xl-6 ">
+                <div class=" container development_img col-md-12  col-sm-12 col-lg-6 col-xl-6 col-xxl-6">
                     <img src="/static/images/development.webp" class="img-fluid" alt="">
                 </div>
 
@@ -67,28 +67,26 @@
     </div>
 
     <section class="branding-offer">
-        <div class="container">
-            <div class="row">
-                <h1 style="text-align:center;padding-top:50px;padding-bottom:20px;font-weight:bold;font-size:50px">
-                    We Offer Website Development Services</h1>
-                {{#each Developments}}
-                <div class="col-md-4 col-lg-4  col-sm-12" style="padding-top:25px;padding-bottom:30px;">
 
-                    <div class="shadow-lg  rounded-pill ">
 
-                        <div class="card container text-center  " style="width: 25rem;height:330px">
-                            <img src="{{this.imgUrl}}" class="img-fluid" style="height: 100px;width:fit-content"
-                                alt="...">
-                            <div class="card-body p-3 ">
-                                <h4 style="font-weight: 800;text-align: left;">{{this.title}}</h4>
-                                <p class="card-text" style="font-size: 18px;padding-top: 15px;">{{this.subTitle}}</p>
-                            </div>
+        <h1 style="text-align:center;padding-top:50px;padding-bottom:20px;font-weight:bold;font-size:50px">
+            We Offer Website Development Services</h1>
+        <div class="development-flex">
+            {{#each Developments}}
+
+                <div class="shadow-lg  rounded-pill ">
+                    <div class="card container text-center  " style="width: 25rem;height:330px">
+                        <img src="{{this.imgUrl}}" class="img-fluid" style="height: 100px;width:fit-content" alt="...">
+                        <div class="card-body p-3 ">
+                            <h4 style="font-weight: 800;text-align: left;">{{this.title}}</h4>
+                            <p class="card-text" style="font-size: 18px;padding-top: 15px;">{{this.subTitle}}</p>
                         </div>
                     </div>
                 </div>
-                {{/each}}
-            </div>
+            
+            {{/each}}
         </div>
+
     </section>
 
     {{> process}}

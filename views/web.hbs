@@ -72,17 +72,18 @@
   </div>
 
 
-  <section class="web-offer  web-flex">
+  <section class="web-offer ">
 
 
     <h1 style="text-align:center;padding-top:50px;padding-bottom:20px;font-weight:bold;font-size:50px">We Offer
       Website Design Services</h1>
-    {{#each webs}}
-    <div class=" " style="padding-top:25px">
+    <div class=" web-flex">
+      {{#each webs}}
 
-      <div class="shadow-lg  rounded-pill ">
 
-        <div class="card container text-center  " style="width: 25rem;height:330px">
+      <div class="shadow-lg  rounded-pill  web-flex ">
+
+        <div class="card  text-center  " style="width: 25rem;height:330px">
           <img src='{{this.imgUrl_2}}' class="img-fluid" style="height: 100px;width:fit-content" alt="...">
           <div class="card-body p-3 ">
             <h4 style="font-weight: 800;text-align: left;">{{this.subTitle_2}}</h4>
@@ -91,9 +92,9 @@
         </div>
 
       </div>
-    </div>
-    {{/each}}
 
+      {{/each}}
+    </div>
   </section>
 
   {{> process}}

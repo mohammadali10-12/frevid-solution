@@ -88,7 +88,7 @@ routers.post('/sign-up', async (req, resp) => {
             });
 
             const token = await signUpData.genrateToken();
-           
+
 
             const register = await signUpData.save();
             resp.status(201).redirect('/login');
@@ -115,11 +115,8 @@ routers.post('/login', async (req, resp) => {
         const password = req.body.password;
 
         const userdetail = await signUp.findOne({ email: email });
-
         const isMatch = await bcrypt.compare(password, userdetail.password);
-
         const token = await userdetail.genrateToken();
-        
         if (isMatch) {
 
             resp.status(201).redirect('/')

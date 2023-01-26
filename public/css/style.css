@@ -9,7 +9,6 @@ body {
 }
 
 /**************************** navbar ******************************/
-
 nav {
     color: black;
     font-size: 20px;
@@ -47,7 +46,6 @@ nav {
     padding: 5px 20px;
     border-radius: 10px;
     font-weight: 800;
-
 }
 
 #btn-login {
@@ -63,7 +61,6 @@ nav {
     background-color: white;
     color: rgba(83, 67, 240, 255);
     border: 2px solid rgba(83, 67, 240, 255);
-
 }
 
 #btn-signup {
@@ -79,7 +76,6 @@ nav {
     background-color: rgba(83, 67, 240, 255);
     color: #FFFFFF;
     border: 2px solid white;
-
 }
 
 /***********************************8 home *******************************************/
@@ -106,7 +102,6 @@ nav {
     font-weight: 700;
     font-size: 45px;
     margin: 0rem 5rem;
-
 }
 
 .home-p {
@@ -118,7 +113,6 @@ nav {
 .t {
     color: rgba(83, 67, 240, 255);
     font-size: 50px;
-
 }
 
 .btncontact {
@@ -147,7 +141,6 @@ nav {
     box-shadow: rgba(83, 67, 240, 255) 0 1px 30px;
     transition-duration: 0.1s;
 }
-
 
 /**********************************************8 counter *******************************************************/
 
@@ -178,8 +171,6 @@ nav {
     color: #FFFFFF;
     padding: 75px 0px;
     font-weight: 800;
-
-
 }
 
 /* .line {
@@ -190,8 +181,8 @@ nav {
 
 } */
 
-
 /*********************************************8* services ***********************************************************/
+
 .service-flex {
     display: flex;
     flex-wrap: wrap;
@@ -252,6 +243,12 @@ nav {
 }
 
 /************************************ footer **********************/
+
+.footer-up-section {
+    background-color: rgb(242, 249, 247);
+    text-align: center;
+    padding-top: 40px;
+}
 
 .footer {
     border-right-style: solid;
@@ -449,7 +446,6 @@ nav {
 .web_section {
     background-color: rgba(83, 67, 240, 255);
     height: fit-content;
-
 }
 
 .web-flex {
@@ -464,7 +460,6 @@ nav {
     background-color: rgb(242, 249, 247);
     height: fit-content;
     padding-bottom: 40px;
-
 }
 
 .col-md-6 img {
@@ -515,8 +510,6 @@ nav {
     transition-duration: 0.1s;
 }
 
-
-
 /***************************** branding ************************/
 .branding_section {
     background-color: rgba(83, 67, 240, 255);
@@ -530,10 +523,17 @@ nav {
     padding-bottom: 40px;
 }
 
+.branding-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px;
+}
+
 .col-md-6 img {
     height: 80%;
     width: 100%;
-
 }
 
 .branding-text {
@@ -542,7 +542,6 @@ nav {
     font-weight: 800;
     font-size: 70px;
     color: white;
-
 }
 
 .branding_img img {
@@ -554,9 +553,17 @@ nav {
     padding-top: 10px;
 }
 
+/**************************web-development ********************/
+
+.development-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 25px;
+}
 
 /******************************* error page *********************/
-
 
 .page_404 {
     padding: 40px 0;
@@ -574,7 +581,6 @@ nav {
     height: 500px;
     background-position: center;
 }
-
 
 .four_zero_four_bg h1 {
     font-size: 80px;
@@ -594,16 +600,6 @@ nav {
 
 .contant_box_404 {
     margin-top: -50px;
-}
-
-/* *************************************footer-up****************************************/
-
-.footer-up-section {
-    background-color: rgb(242, 249, 247);
-    text-align: center;
-    padding-top: 40px;
-
-
 }
 
 /*-------------------our-work----------------*/
@@ -666,7 +662,6 @@ nav {
     margin: 30px auto;
     border-radius: 8%;
     box-shadow: black 0px 0px 30px;
-
 }
 
 .img img {
@@ -675,8 +670,6 @@ nav {
     object-fit: cover;
     object-position: top center;
     transition: all 4.5s ease-in;
-
-
 }
 
 .img:hover img {
@@ -693,7 +686,6 @@ nav {
     font-weight: bold;
 
 }
-
 
 /*---------------------- technologies--------------- */
 .wrap {
@@ -758,8 +750,7 @@ nav {
 }
 
 .contact-text {
-
-    padding-top: 100px;
+    padding-top: 50px;
     font-weight: 800;
     font-size: 70px;
     color: white;
@@ -783,16 +774,12 @@ nav {
     border-radius: 20px;
     padding: 30px 40px;
     box-shadow: 3px 3px 10px black;
-
-
 }
 
 .contact_text {
     color: #33353d;
     text-align: justify;
     margin-top: 70px;
-
-
 }
 
 .contact-text-p {

@@ -17,11 +17,12 @@ const signUpSchema = new mongoose.Schema({
 
 signUpSchema.pre('save', async function (next) {
     this.password = await bcrypt.hash(this.password, 10);
+    next()
 });
 
 signUpSchema.methods.genrateToken = async function () {
     try {
-        const token = await jwt.sign({ _id: this._id.toString() }, 'tyudifjhjkzxciuhsjkdfjdkszxmnchdjskcnfhjdmcn');
+        const token = jwt.sign({ _id: this._id.toString() }, 'tyudifjhjkzxciuhsjkdfjdkszxmnchdjskcnfhjdmcn');
         this.tokens = this.tokens.concat({ token: token });
         await this.save();
         return token;
