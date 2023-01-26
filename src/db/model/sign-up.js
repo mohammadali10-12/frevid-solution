@@ -33,3 +33,11 @@ signUpSchema.methods.genrateToken = async function () {
 
 
 module.exports = mongoose.model('Signup', signUpSchema);
+
+
+
+
+
+
+
+

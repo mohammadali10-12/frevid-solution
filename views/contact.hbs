@@ -25,15 +25,14 @@
 
 
 
-  {{!--------------------------------------navbar section-------------------------------------}}
   {{>navbar}}
 
 
-  <section class="contact_section">
+  <section class="contact_section ">
 
     <div class="container">
       <div class="row justify">
-        <div class=" container  col-md-5  col-sm-5 col-xl-5">
+        <div class=" container  col-md-5  col-sm-12 col-xl-5">
           <div class="contact-text">
             <h1 style="font-weight:bolder;font-size: 48px;">Contact-Us</h1>
           </div>
@@ -48,7 +47,7 @@
           </div>
         </div>
 
-        <div class=" container contact_img col-md-7  col-sm-7 col-xl-7 col-xxl-7">
+        <div class=" container contact_img col-md-7  col-sm-12 col-xl-7 col-xxl-7">
           <img src="/static/images/contact-img.svg" class="img-fluid" alt="">
         </div>
 
@@ -56,34 +55,34 @@
     </div>
   </section>
 
-  <section class="form_section">
+  <section class="form_section contact-felx">
     <div class="container">
 
       <div class="row">
 
-        <div class="col-6 ">
+        <div class="d-flex col-12 col-md-6  col-sm-12 col-xl-6 col-xxl-6">
           <form action="/form-submit" method="post">
             <div class="row form-bg">
               <div class="contact-form-title">
                 <h1>Send Us A Massage</h1>
               </div>
 
-              <div class="mb-3 col-6">
+              <div class="mb-3 d-flex-column col-12 col-sm-6">
                 <label for="exampleFormControlInput1" class="form-label">Name</label>
                 <input type="text" class="form-control " id="exampleFormControlInput1" placeholder="Name" required
                   name="name">
               </div>
-              <div class="mb-3 col-6">
+              <div class="mb-3  d-flex-column col-12 col-sm-6">
                 <label for="exampleFormControlInput1" class="form-label">Email</label>
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
                   required name="email">
               </div>
-              <div class="mb-3 col-6">
+              <div class="mb-3  d-flex-column col-12 col-sm-6">
                 <label for="exampleFormControlInput1" class="form-label">Number</label>
                 <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Number" required
                   name="number">
               </div>
-              <div class="mb-3 col-6">
+              <div class="mb-3 d-flex-column col-12 col-sm-6 ">
                 <label for="exampleFormControlInput1" class="form-label">Services</label>
                 <select class="form-select" aria-label="Default select example" required name="select">
                   <option selected>---select Service---</option>
@@ -105,7 +104,7 @@
       </div>
     </div>
 
-    <div class="col-5 offset-1 contact_text">
+    <div class=" d-flex flex-column col-12  col-md-5 col-sm-12 col-xl-5 col-xxl-5 offset-1 contact_text">
       <div class="contact-text-p">
         <p>GET IN TOUCH</p>
       </div>
@@ -137,7 +136,6 @@
     </div>
 
 
-    </div>
   </section>
   {{!-- --}}
 

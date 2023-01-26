@@ -64,6 +64,10 @@
                                             <div class="form-outline flex-fill mb-0">
                                                 <input type="password" id="form3Example4c" placeholder="Password"
                                                     class="form-control" required name="password" />
+                                              <span class="me-5">  <input class="form-check-input me-2 " onclick="showPassword()"
+                                                    type="checkbox" value="" id="form2Example3c" />show password</span>
+
+
                                             </div>
                                         </div>
 
@@ -105,10 +109,21 @@
         </div>
     </section>
 
-{{>footer}}
+    {{>footer}}
 
 
+    <script>
+        const showPassword = () => {
 
+            let userPassword = document.getElementById('form3Example4c');
+
+            if (userPassword.type === 'password') {
+                userPassword.type = 'text';
+            } else {
+                userPassword.type = 'password';
+            }
+        }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12">
     </script>

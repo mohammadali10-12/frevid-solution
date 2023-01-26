@@ -10,7 +10,7 @@
         {{#each data}}
 
         <div class="service-box">
-            <div class="card container" style="height:420px">
+            <div class="card container" style="height:455px">
                 <a href="{{this.link}}">
                     <img src="{{this.imgUrl}}" class="service-img" alt="...">
                 </a>
@@ -18,10 +18,29 @@
                     <h4>{{this.title}}</h4>
                     <p class="card-text" style="text-align:center;">{{this.subTitle}}</p>
                 </div>
+                <button type="button" onclick="bookingService()">Booking</button>
             </div>
+
         </div>
         {{/each}}
 
     </div>
 
 </section>
+
+<script>
+const bookingService=()=>{
+
+var username = prompt("Please enter your username:");
+var password = prompt("Please enter your password:");
+
+if (username == "admin" && password == "password") {
+  alert("Login successful!");
+} else {
+  alert("Incorrect username or password!");
+}   as 
+
+
+
+}
+</script>
