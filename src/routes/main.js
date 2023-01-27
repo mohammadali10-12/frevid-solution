@@ -2,7 +2,7 @@ const { Router } = require('express/lib/application')
 const express = require('express')
 
 const routers = express.Router()
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const Web = require('../db/model/web');
@@ -11,7 +11,7 @@ const Development = require('../db/model/development');
 const Service = require('../db/model/service');
 const User = require('../db/model/contact');
 const ourWork = require('../db/model/ourwork');
-const signUp = require('../db/model/sign-up');
+const SignUp = require('../db/model/sign-up');
 
 
 
@@ -69,7 +69,7 @@ routers.get('/ourwork', async (req, resp) => {
 })
 
 routers.get('/sign-up', (req, resp) => {
-    resp.render('sign-up')
+    resp.render('sign-up');
 })
 
 routers.post('/sign-up', async (req, resp) => {
@@ -80,17 +80,18 @@ routers.post('/sign-up', async (req, resp) => {
 
         if (password === cpassword) {
 
-            const signUpData = new signUp({
+            const signUpData = new SignUp({
                 name: req.body.name,
                 email: req.body.email,
                 password: password,
                 cpassword: cpassword
             });
 
-            const token = await signUpData.genrateToken();
+            // const token = await signUpData.genrateToken();
 
 
             const register = await signUpData.save();
+            console.log(register);
             resp.status(201).redirect('/login');
 
         }
@@ -114,12 +115,14 @@ routers.post('/login', async (req, resp) => {
         const email = req.body.email;
         const password = req.body.password;
 
-        const userdetail = await signUp.findOne({ email: email });
+        const userdetail = await SignUp.findOne({ email: email });
+
         const isMatch = await bcrypt.compare(password, userdetail.password);
-        const token = await userdetail.genrateToken();
+
+        // const token = await userdetail.genrateToken();
         if (isMatch) {
 
-            resp.status(201).redirect('/')
+            resp.status(201).render('index')
         } else {
             resp.status(400).send('login detail is wrong');
         }
