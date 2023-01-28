@@ -62,13 +62,10 @@
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0 password-container">
-                                                
-  <input type="password" placeholder="Password..." class="form-control"  id="password">
-  <i class="fa-solid fa-eye" id="eye"></i>
 
-                                              
-
-
+                                                <input type="password" placeholder="Password..." class="form-control"
+                                                    id="password">
+                                                <i class="fa-solid fa-eye" id="eye"></i>
                                             </div>
                                         </div>
 
@@ -114,23 +111,14 @@
 
 
     <script>
-        {{!-- const showPassword = () => {
-
-            let userPassword = document.getElementById('form3Example4c');
-
-            if (userPassword.type === 'password') {
-                userPassword.type = 'text';
-            } else {
-                userPassword.type = 'password';
-            }
-        } --}}
+       
         const passwordInput = document.querySelector("#password")
-const eye = document.querySelector("#eye")
-        eye.addEventListener("click", function(){
-  this.classList.toggle("fa-eye-slash")
-  const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
-  passwordInput.setAttribute("type", type)
-})
+        const eye = document.querySelector("#eye")
+        eye.addEventListener("click", function () {
+            this.classList.toggle("fa-eye-slash")
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password"
+            passwordInput.setAttribute("type", type)
+        })
 
 
     </script>
