@@ -818,3 +818,21 @@ nav {
     border: 1px solid black;
     box-shadow: 3px 3px 10px black;
 }
+.password-container{
+ 
+    position: relative;
+  }
+  /* .password-container input[type="password"],
+  .password-container input[type="text"]{
+    width: 100%;
+    padding: 12px 36px 12px 12px;
+    box-sizing: border-box;
+  } */
+  .fa-eye{
+    position: absolute;
+    top: 28%;
+    right: 4%;
+    cursor: pointer;
+    color: black;
+
+  }
