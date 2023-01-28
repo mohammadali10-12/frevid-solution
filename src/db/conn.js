@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
-const Web = require('./model/web');
-const Branding = require('./model/branding');
-const Development = require('./model/development');
-const Service = require('../db/model/service');
-const OurWork = require('./model/ourwork');
 
-const uri = 'mongodb://localhost:27017/Frevid_DB';
+
+
+const uri =process.env.DB_CONNECTION;
 
 const options = {
   useNewUrlParser: true,
@@ -32,11 +29,7 @@ const options = {
 
 mongoose.set('strictQuery', true);
 const connectWithDB = () => {
-  mongoose.connect(uri, options, (err, db) => {
-
-
-
-
+  mongoose.connect(uri, options, (err) => {
     if (err) console.error(err);
     else console.log("database connection")
   })

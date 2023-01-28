@@ -75,28 +75,26 @@ routers.get('/sign-up', (req, resp) => {
 routers.post('/sign-up', async (req, resp) => {
     try {
 
-        const password = req.body.password;
-        const cpassword = req.body.cpassword;
+        const { name, email, password, cpassword } = req.body;
 
-        if (password === cpassword) {
+        const userExist = await SignUp.findOne({ email: email })
+        if (password != cpassword) {
+            resp.json('password are not matching')
+        } else if (userExist) {
+            resp.status(400).json('email is already exist');
+        }
+        else {
+            const signUpData = new SignUp({ name, email, password, cpassword });
+            // name: name,
+            // email: email,
+            // password: password,
+            // cpassword: cpassword
 
-            const signUpData = new SignUp({
-                name: req.body.name,
-                email: req.body.email,
-                password: password,
-                cpassword: cpassword
-            });
 
             // const token = await signUpData.genrateToken();
-
-
             const register = await signUpData.save();
             console.log(register);
             resp.status(201).redirect('/login');
-
-        }
-        else {
-            resp.json('password are not matching')
         }
 
 
@@ -112,13 +110,13 @@ routers.get('/login', (req, resp) => {
 routers.post('/login', async (req, resp) => {
     try {
 
-        const email = req.body.email;
-        const password = req.body.password;
+        const { email, password } = req.body;
 
-        const userdetail = await SignUp.findOne({ email: email });
+        const userDetail = await SignUp.findOne({ email: email });
 
-        const isMatch = await bcrypt.compare(password, userdetail.password);
-
+        const isMatch = await bcrypt.compare(password, userDetail.password);
+        console.log(password);
+        console.log(userDetail.password);
         // const token = await userdetail.genrateToken();
         if (isMatch) {
 
@@ -135,14 +133,14 @@ routers.post('/login', async (req, resp) => {
 routers.post('/form-submit', async (req, resp) => {
     try {
 
-        const contact = new User({
-            name: req.body.name,
-            email: req.body.email,
-            number: req.body.number,
-            message: req.body.message,
-            services: req.body.select
+        const { name, email, number, message, services } = req.body;
+        const contact = new User({ name, email, number, message, services });
+        // name: req.body.name,
+        // email: req.body.email,
+        // number: req.body.number,
+        // message: req.body.message,
+        // services: req.body.select
 
-        })
         const data = await contact.save()
 
         resp.status(201).redirect('/')
@@ -150,7 +148,7 @@ routers.post('/form-submit', async (req, resp) => {
 
     } catch (e) {
         resp.status(500).send(e);
-        resp.redirect('/')
+
     }
 
 })
