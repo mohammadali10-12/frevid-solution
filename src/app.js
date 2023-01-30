@@ -7,6 +7,7 @@ const app = express();
 require('./db/conn');
 
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const hbs = require('hbs');
 
@@ -17,7 +18,8 @@ const routers = require('./routes/main');
 app.use(express.json());
 app.use(express.urlencoded({extended:false}))
 app.use('/static', express.static('public'));
-app.use('/', routers)
+app.use('/', routers);
+app.use(cookieParser());
 
 
 

@@ -3,7 +3,8 @@ const express = require('express')
 
 const routers = express.Router()
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+// const jwt = require('jsonwebtoken');
 
 const Web = require('../db/model/web');
 const Branding = require('../db/model/branding');
@@ -26,6 +27,7 @@ routers.get('/', async (req, resp) => {
 })
 
 routers.get('/about', (req, resp) => {
+
     resp.render('about')
 })
 
@@ -79,9 +81,9 @@ routers.post('/sign-up', async (req, resp) => {
 
         const userExist = await SignUp.findOne({ email: email })
         if (password != cpassword) {
-            resp.json('password are not matching')
+            resp.render('sign-up',{isNotMatch:'password are not match'});
         } else if (userExist) {
-            resp.status(400).json('email is already exist');
+            resp.status(400).render('sign-up',{exist:'email is already exist'});
         }
         else {
             const signUpData = new SignUp({ name, email, password, cpassword });
@@ -92,7 +94,12 @@ routers.post('/sign-up', async (req, resp) => {
 
 
             const token = await signUpData.genrateToken();
-            console.log('token'+token);
+            resp.cookie('jwt', token, {
+                expires: new Date(Date.now() + 200000),
+                httpOnly: true,
+            });
+
+
             const register = await signUpData.save();
             console.log(register);
             resp.status(201).redirect('/login');
@@ -119,19 +126,26 @@ routers.post('/login', async (req, resp) => {
         // console.log(password);
         // console.log(userDetail.password);
         const token = await userDetail.genrateToken();
-          console.log('login token'+token);
-        console.log(` db password ${userDetail.password} and user password ${password}`);
+        resp.cookie('jwt', token, {
+            expires: new Date(Date.now() + 1000000),
+            httpOnly: true,
+        });
+
+        
+
         if (userDetail.password === password) {
 
-            resp.status(201).render('index')
+            resp.status(201).redirect('/');
         } else {
-            resp.status(400).send('login detail is wrong');
+            resp.status(400).render('login',{error:'wrong login detail'});
         }
 
     } catch (error) {
         resp.status(400).send(error);
     }
 })
+
+
 
 routers.post('/form-submit', async (req, resp) => {
     try {
