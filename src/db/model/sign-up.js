@@ -10,38 +10,43 @@ const signUpSchema = new mongoose.Schema({
     password: { type: String, required: true, lowercase: true },
     creatAt: { type: Date, default: Date.now },
     isActive: { type: Boolean },
+    role: {
+        type: String,
+        enum: ["ADMIN", "USER"],
+        default: "USER",
+    },
     tokens: [{
         token: { type: String, require: true }
     }]
 });
 
-signUpSchema.pre('save', async function (next) {
+// signUpSchema.pre('save', async function (next) {
 
-    if (this.isModified('password')) {
-        // console.log(this.password);
-        this.password = await bcrypt.hash(this.password, 10);
-        // console.log(this.password = await bcrypt.hash(this.password, 4));
+//     if (this.isModified('password')) {
+//         // console.log(this.password);
+//         this.password = await bcrypt.hash(this.password, 10);
+//         // console.log(this.password = await bcrypt.hash(this.password, 10));
 
-    }
-    next();
-});
-
-// signUpSchema.methods.genrateToken = async function () {
-//     try {
-//         const token = jwt.sign({ _id: this._id.toString() }, 'tyudifjhjkzxciuhsjkdfjdkszxmnchdjskcnfhjdmcn');
-//         this.tokens = this.tokens.concat({ token: token });
-//         await this.save();
-//         return token;
-//     } catch (error) {
-//         resp.send('the error' + error);
 //     }
-// }
+//     next();
+// });
+
+signUpSchema.methods.genrateToken = async function () {
+    try {
+        const token = jwt.sign({ _id: this._id.toString() }, 'tyudifjhjkzxciuhsjkdfjdkszxmnchdjskcnfhjdmcn');
+        this.tokens = this.tokens.concat({ token: token });
+        await this.save();
+        return token;
+    } catch (error) {
+        resp.send('the error' + error);
+    }
+}
 
 
 
 module.exports = mongoose.model('Signup', signUpSchema);
 
- 
+
 
 
 

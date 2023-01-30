@@ -91,7 +91,8 @@ routers.post('/sign-up', async (req, resp) => {
             // cpassword: cpassword
 
 
-            // const token = await signUpData.genrateToken();
+            const token = await signUpData.genrateToken();
+            console.log('token'+token);
             const register = await signUpData.save();
             console.log(register);
             resp.status(201).redirect('/login');
@@ -114,11 +115,13 @@ routers.post('/login', async (req, resp) => {
 
         const userDetail = await SignUp.findOne({ email: email });
 
-        const isMatch = await bcrypt.compare(password, userDetail.password);
-        console.log(password);
-        console.log(userDetail.password);
-        // const token = await userdetail.genrateToken();
-        if (isMatch) {
+        // const isMatch = await bcrypt.compare(password, userDetail.password);
+        // console.log(password);
+        // console.log(userDetail.password);
+        const token = await userDetail.genrateToken();
+          console.log('login token'+token);
+        console.log(` db password ${userDetail.password} and user password ${password}`);
+        if (userDetail.password === password) {
 
             resp.status(201).render('index')
         } else {
@@ -160,4 +163,5 @@ routers.get('*', (req, resp) => {
 
 
 module.exports = routers
+
 
