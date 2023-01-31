@@ -2,12 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-
-
 require('./db/conn');
-
-const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+
+
 
 const hbs = require('hbs');
 
@@ -20,14 +18,6 @@ app.use(express.urlencoded({extended:false}))
 app.use('/static', express.static('public'));
 app.use('/', routers);
 app.use(cookieParser());
-
-
-
-//db connection
-
-
-
-
 
 
 //templet engine

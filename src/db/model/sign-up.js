@@ -1,13 +1,13 @@
 
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 const jwt = require('jsonwebtoken');
 
 const signUpSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true, lowercase: true },
+    password: { type: String, required: true},
     creatAt: { type: Date, default: Date.now },
     isActive: { type: Boolean },
     role: {
@@ -20,16 +20,7 @@ const signUpSchema = new mongoose.Schema({
     }]
 });
 
-// signUpSchema.pre('save', async function (next) {
 
-//     if (this.isModified('password')) {
-//         // console.log(this.password);
-//         this.password = await bcrypt.hash(this.password, 10);
-//         // console.log(this.password = await bcrypt.hash(this.password, 10));
-
-//     }
-//     next();
-// });
 
 signUpSchema.methods.genrateToken = async function () {
     try {
@@ -42,11 +33,16 @@ signUpSchema.methods.genrateToken = async function () {
     }
 }
 
+signUpSchema.pre("save", async function (next) {
+    if (this.isModified('password')) {
+       this.password = await bcrypt.hash(this.password, 10);       
+    }
+    next();
+})
 
+const SignUp = new mongoose.model('Signup', signUpSchema);
 
-module.exports = mongoose.model('Signup', signUpSchema);
-
-
+module.exports = SignUp;
 
 
 
