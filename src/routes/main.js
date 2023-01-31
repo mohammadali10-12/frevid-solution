@@ -1,10 +1,11 @@
 const { Router } = require('express/lib/application')
 const express = require('express');
+const app = express();
 
 const routers = express.Router();
 const bcrypt = require('bcrypt');
-
-
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 // const jwt = require('jsonwebtoken');
 
 const Web = require('../db/model/web');
@@ -14,7 +15,7 @@ const Service = require('../db/model/service');
 const User = require('../db/model/contact');
 const ourWork = require('../db/model/ourwork');
 const SignUp = require('../db/model/sign-up');
-
+const auth = require('../middleware/auth');
 
 
 // all routes
@@ -132,7 +133,8 @@ routers.post('/login', async (req, resp) => {
             expires: new Date(Date.now() + 1000000),
             httpOnly: true,
         });
-        console.log(`this is a cookie awesome ${req.cookies}`);
+
+    //  console.log(req.cookies.jwt);
         if (isMatch) {
             resp.status(201).redirect('/');
         } else {
@@ -140,7 +142,7 @@ routers.post('/login', async (req, resp) => {
         }
 
     } catch (error) {
-        resp.status(400).send(error);
+        resp.status(400).render('login', { error: 'wrong login detail' });
     }
 })
 
@@ -173,8 +175,8 @@ routers.get('*', (req, resp) => {
     resp.render('error')
 })
 
-
-
 module.exports = routers
+
+
 
 
