@@ -1,12 +1,13 @@
 const { Router } = require('express/lib/application')
 const express = require('express');
-const app = express();
+
 
 const routers = express.Router();
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
-app.use(cookieParser());
-// const jwt = require('jsonwebtoken');
+routers.use(cookieParser());
+const jwt = require('jsonwebtoken');
+// const session = require('express-session');
 
 const Web = require('../db/model/web');
 const Branding = require('../db/model/branding');
@@ -15,7 +16,8 @@ const Service = require('../db/model/service');
 const User = require('../db/model/contact');
 const ourWork = require('../db/model/ourwork');
 const SignUp = require('../db/model/sign-up');
-const auth = require('../middleware/auth');
+const auth = require('../db/middleware/auth');
+const async = require('hbs/lib/async');
 
 
 // all routes
@@ -24,11 +26,12 @@ routers.get('/', async (req, resp) => {
     const services = await Service.find({})
 
     resp.render('index', {
-        services: services
+        services: services,
+
     })
 })
 
-routers.get('/about', (req, resp) => {
+routers.get('/about', auth, (req, resp) => {
 
     resp.render('about')
 })
@@ -67,10 +70,17 @@ routers.get('/contact', (req, resp) => {
 })
 
 routers.get('/ourwork', async (req, resp) => {
+
     const workDetail = await ourWork.find({})
     resp.render('ourwork', {
         ourWork: workDetail
     });
+})
+
+//admin router 
+
+routers.get('/admin', (req, resp) => {
+    resp.render('admin');
 })
 
 routers.get('/sign-up', (req, resp) => {
@@ -90,16 +100,12 @@ routers.post('/sign-up', async (req, resp) => {
         }
         else {
             const signUpData = new SignUp({ name, email, password, cpassword });
-            // name: name,
-            // email: email,
-            // password: password,
-            // cpassword: cpassword
-
 
             const token = await signUpData.genrateToken();
+
             resp.cookie('jwt', token, {
                 expires: new Date(Date.now() + 200000),
-                httpOnly: true,
+                httpOnly: false,
             });
 
             const register = await signUpData.save();
@@ -113,6 +119,8 @@ routers.post('/sign-up', async (req, resp) => {
     }
 })
 
+//login router
+
 routers.get('/login', (req, resp) => {
     resp.render('login')
 })
@@ -123,20 +131,30 @@ routers.post('/login', async (req, resp) => {
         const email = req.body.email;
         const password = req.body.password;
 
+        const adminEmail = 'admin@gmail.com';
+
+
+
         const userDetail = await SignUp.findOne({ email: email });
 
         const isMatch = await bcrypt.compare(password, userDetail.password);
 
         const token = await userDetail.genrateToken();
 
+
         resp.cookie('jwt', token, {
             expires: new Date(Date.now() + 1000000),
-            httpOnly: true,
+            httpOnly: false,
         });
 
-    //  console.log(req.cookies.jwt);
+
+        if (adminEmail === email) {
+            resp.status(200);
+            resp.redirect('/admin');
+        }
         if (isMatch) {
-            resp.status(201).redirect('/');
+
+            resp.status(200).redirect('/');
         } else {
             resp.status(400).render('login', { error: 'wrong login detail' });
         }
@@ -146,6 +164,21 @@ routers.post('/login', async (req, resp) => {
     }
 })
 
+//log-out router
+
+routers.get('/logout', auth, async (req, resp) => {
+    try {
+
+        resp.clearCookie('jwt');
+        console.log('logout successfully');
+
+        await req.user.save();
+        resp.redirect('/login');
+    } catch (error) {
+
+        resp.status(500).send(error);
+    }
+})
 
 
 routers.post('/form-submit', async (req, resp) => {
@@ -153,11 +186,7 @@ routers.post('/form-submit', async (req, resp) => {
 
         const { name, email, number, message, services } = req.body;
         const contact = new User({ name, email, number, message, services });
-        // name: req.body.name,
-        // email: req.body.email,
-        // number: req.body.number,
-        // message: req.body.message,
-        // services: req.body.select
+
 
         const data = await contact.save()
 

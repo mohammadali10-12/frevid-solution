@@ -3,21 +3,21 @@ const express = require('express');
 const app = express();
 
 require('./db/conn');
-const cookieParser = require('cookie-parser');
 
 
 
 const hbs = require('hbs');
 
-const port = process.env.PORT || 4200  
+const port = process.env.PORT || 4200
 
 const routers = require('./routes/main');
 
 app.use(express.json());
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({ extended: false }))
 app.use('/static', express.static('public'));
 app.use('/', routers);
-app.use(cookieParser());
+
+
 
 
 //templet engine
