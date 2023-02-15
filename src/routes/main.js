@@ -6,8 +6,9 @@ const routers = express.Router();
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 routers.use(cookieParser());
+
 const jwt = require('jsonwebtoken');
-// const session = require('express-session');
+
 
 const Web = require('../db/model/web');
 const Branding = require('../db/model/branding');
@@ -17,7 +18,9 @@ const User = require('../db/model/contact');
 const ourWork = require('../db/model/ourwork');
 const SignUp = require('../db/model/sign-up');
 const auth = require('../db/middleware/auth');
-const async = require('hbs/lib/async');
+
+// const async = require('hbs/lib/async');
+
 
 
 // all routes
@@ -164,6 +167,7 @@ routers.post('/login', async (req, resp) => {
     }
 })
 
+
 //log-out router
 
 routers.get('/logout', auth, async (req, resp) => {
@@ -171,9 +175,10 @@ routers.get('/logout', auth, async (req, resp) => {
 
         resp.clearCookie('jwt');
         console.log('logout successfully');
-
         await req.user.save();
-        resp.redirect('/login');
+        resp.render('login');
+
+
     } catch (error) {
 
         resp.status(500).send(error);
@@ -208,4 +213,4 @@ module.exports = routers
 
 
 
-
+//when user login after navbar in show logout and remove login in node js and express js with handelbar and cookies?
