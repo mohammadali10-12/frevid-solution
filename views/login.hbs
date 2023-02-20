@@ -25,9 +25,9 @@
 <body>
 
     {{>navbar}}
-{{#if error}}
+    {{#if error}}
     <div class="alert alert-danger">{{error}}</div>
-{{/if}}
+    {{/if}}
     <section class="vh-100" style="background-color: #eee;">
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -37,7 +37,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
 
                                     <form class="mx-1 mx-md-4" action="/login" method="post">
 
@@ -58,9 +58,6 @@
                                                     id="password" name="password">
                                                 <i class="fa-solid fa-eye" id="eye"></i>
 
-
-
-
                                             </div>
                                         </div>
 
@@ -70,7 +67,7 @@
                                             <input class="form-check-input me-2" type="checkbox" value=""
                                                 id="form2Example3c" required />
                                             <label class="form-check-label" for="form2Example3">
-                                                I agree all statements in <a href="#!">Terms of service</a>
+                                                I agree all statements in <a href="/sign-up">your haven't account?</a>
                                             </label>
                                         </div>
 

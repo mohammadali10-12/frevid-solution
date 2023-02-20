@@ -8,7 +8,12 @@ const cookieParser = require('cookie-parser');
 routers.use(cookieParser());
 
 const jwt = require('jsonwebtoken');
-
+const session = require('express-session');
+routers.use(session({
+    secret: 'mysecret',
+    resave: false,
+    saveUninitialized: false,
+}));
 
 const Web = require('../db/model/web');
 const Branding = require('../db/model/branding');
@@ -19,75 +24,96 @@ const ourWork = require('../db/model/ourwork');
 const SignUp = require('../db/model/sign-up');
 const auth = require('../db/middleware/auth');
 
-// const async = require('hbs/lib/async');
 
 
 
 // all routes
 
 routers.get('/', async (req, resp) => {
+    const isLoggedIn = req.session.isLoggedIn || false;
+
     const services = await Service.find({})
 
-    resp.render('index', {
+    return resp.render('index', {
+        isLoggedIn,
         services: services,
-
+        // loggedin: hbscontent
     })
+
 })
 
 routers.get('/about', auth, (req, resp) => {
+    const isLoggedIn = req.session.isLoggedIn || false;
 
-    resp.render('about')
+    // console.log(req.cookies);
+    return resp.render('about', { isLoggedIn })
 })
 
 routers.get('/service', (req, resp) => {
-    resp.render('service')
+    const isLoggedIn = req.session.isLoggedIn || false;
+    return resp.render('service', { isLoggedIn })
 })
 
 routers.get('/service/web', async (req, resp) => {
+    const isLoggedIn = req.session.isLoggedIn || false;
+
     const webs = await Web.find({})
 
-    resp.render('web', {
+    return resp.render('web', {
+        isLoggedIn,
         webs: webs
     })
 })
 
 routers.get('/service/branding', async (req, resp) => {
+    const isLoggedIn = req.session.isLoggedIn || false;
+
     const Brandings = await Branding.find({})
 
-    resp.render('branding', {
+    return resp.render('branding', {
+        isLoggedIn,
         Brandings: Brandings
     })
 })
 
 routers.get('/service/web-development', async (req, resp) => {
+    const isLoggedIn = req.session.isLoggedIn || false;
+
 
     const Developments = await Development.find({})
 
-    resp.render('web-development', {
+    return resp.render('web-development', {
+        isLoggedIn,
         Developments: Developments
     })
 })
 
 routers.get('/contact', (req, resp) => {
-    resp.render('contact');
+    const isLoggedIn = req.session.isLoggedIn || false;
+
+    return resp.render('contact', { isLoggedIn });
 })
 
 routers.get('/ourwork', async (req, resp) => {
 
+    const isLoggedIn = req.session.isLoggedIn || false;
+
     const workDetail = await ourWork.find({})
-    resp.render('ourwork', {
-        ourWork: workDetail
+    return resp.render('ourwork', {
+        isLoggedIn,
+        ourWork: workDetail,
     });
+
 })
 
 //admin router 
 
 routers.get('/admin', (req, resp) => {
-    resp.render('admin');
+    return resp.render('admin');
 })
 
 routers.get('/sign-up', (req, resp) => {
-    resp.render('sign-up');
+    return resp.render('sign-up');
 })
 
 routers.post('/sign-up', async (req, resp) => {
@@ -97,15 +123,17 @@ routers.post('/sign-up', async (req, resp) => {
 
         const userExist = await SignUp.findOne({ email: email })
         if (password != cpassword) {
-            resp.render('sign-up', { isNotMatch: 'password are not match' });
+            return resp.render('sign-up', { isNotMatch: 'password are not match' });
         } else if (userExist) {
-            resp.status(400).render('sign-up', { exist: 'email is already exist' });
+            return resp.status(400).render('sign-up', { exist: 'email is already exist' });
         }
         else {
             const signUpData = new SignUp({ name, email, password, cpassword });
 
             const token = await signUpData.genrateToken();
+            req.session.token = token;
 
+            req.session.isLoggedIn = true;
             resp.cookie('jwt', token, {
                 expires: new Date(Date.now() + 200000),
                 httpOnly: false,
@@ -113,12 +141,12 @@ routers.post('/sign-up', async (req, resp) => {
 
             const register = await signUpData.save();
 
-            resp.status(201).redirect('/login');
+            return resp.status(201).redirect('/login');
         }
 
 
     } catch (error) {
-        resp.status(400).send(error)
+        return resp.status(400).send(error)
     }
 })
 
@@ -136,15 +164,14 @@ routers.post('/login', async (req, resp) => {
 
         const adminEmail = 'admin@gmail.com';
 
-
-
         const userDetail = await SignUp.findOne({ email: email });
 
         const isMatch = await bcrypt.compare(password, userDetail.password);
 
         const token = await userDetail.genrateToken();
 
-
+        req.session.token = token;
+        req.session.isLoggedIn = true;
         resp.cookie('jwt', token, {
             expires: new Date(Date.now() + 1000000),
             httpOnly: false,
@@ -153,13 +180,13 @@ routers.post('/login', async (req, resp) => {
 
         if (adminEmail === email) {
             resp.status(200);
-            resp.redirect('/admin');
+            return resp.redirect('/admin');
         }
         if (isMatch) {
 
-            resp.status(200).redirect('/');
+            return resp.status(200).redirect('/');
         } else {
-            resp.status(400).render('login', { error: 'wrong login detail' });
+            return resp.status(400).render('login', { error: 'wrong login detail' });
         }
 
     } catch (error) {
@@ -172,11 +199,13 @@ routers.post('/login', async (req, resp) => {
 
 routers.get('/logout', auth, async (req, resp) => {
     try {
+        req.session.isLoggedIn = false;
+        req.session.token = null;
 
         resp.clearCookie('jwt');
         console.log('logout successfully');
         await req.user.save();
-        resp.render('login');
+        return resp.render('login');
 
 
     } catch (error) {
