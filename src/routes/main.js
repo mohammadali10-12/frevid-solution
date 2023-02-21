@@ -112,6 +112,9 @@ routers.get('/admin', (req, resp) => {
     return resp.render('admin');
 })
 
+routers.get('/user',(req,resp)=>{
+return resp.render('user');
+})
 routers.get('/sign-up', (req, resp) => {
     return resp.render('sign-up');
 })
