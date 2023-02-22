@@ -23,6 +23,7 @@ const User = require('../db/model/contact');
 const ourWork = require('../db/model/ourwork');
 const SignUp = require('../db/model/sign-up');
 const auth = require('../db/middleware/auth');
+const async = require('hbs/lib/async');
 
 
 
@@ -112,9 +113,21 @@ routers.get('/admin', (req, resp) => {
     return resp.render('admin');
 })
 
-routers.get('/user',(req,resp)=>{
-return resp.render('user');
+routers.get('/user', async (req, resp) => {
+
+    const detail = await SignUp.find();
+    return resp.render('user', {
+        users: detail
+    });
 })
+
+routers.get('/adminOurwork', (req, resp) => {
+    return resp.render('adminOurwork')
+})
+routers.get('/adminservices', (req, resp) => {
+    return resp.render('adminservices')
+})
+
 routers.get('/sign-up', (req, resp) => {
     return resp.render('sign-up');
 })
