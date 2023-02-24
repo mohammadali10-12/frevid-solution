@@ -15,7 +15,32 @@
 <body>
     {{>adminsidebarpartial}}
     {{>admintopbarpartial}}
-    this service page for admin side
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>imageURL</th>
+                        <th>Title</th>
+                        <th>SubTitle</th>
+                        <th>Link</th>
+
+                    </tr>
+                </thead>
+                {{#each ourservices}}
+                <tbody>
+                    <tr>
+                        <td>{{this.imgUrl}}</td>
+                        <td>{{this.title}}</td>
+                        <td>{{this.subTitle}}</td>
+                        <td>{{this.link}}</td>
+
+                    </tr>
+                </tbody>
+                {{/each}}
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>

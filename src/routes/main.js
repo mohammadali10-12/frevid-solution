@@ -43,7 +43,7 @@ routers.get('/', async (req, resp) => {
 
 })
 
-routers.get('/about', auth, (req, resp) => {
+routers.get('/about', (req, resp) => {
     const isLoggedIn = req.session.isLoggedIn || false;
 
     // console.log(req.cookies);
@@ -109,7 +109,7 @@ routers.get('/ourwork', async (req, resp) => {
 
 //admin router 
 
-routers.get('/admin', (req, resp) => {
+routers.get('/admin', auth, (req, resp) => {
     return resp.render('admin');
 })
 
@@ -121,11 +121,20 @@ routers.get('/user', async (req, resp) => {
     });
 })
 
-routers.get('/adminOurwork', (req, resp) => {
-    return resp.render('adminOurwork')
+routers.get('/adminOurwork', async (req, resp) => {
+
+    const ourwork = await ourWork.find();
+    return resp.render('adminOurwork', {
+        ourwork: ourwork
+    })
 })
-routers.get('/adminservices', (req, resp) => {
-    return resp.render('adminservices')
+routers.get('/adminservices', async (req, resp) => {
+
+    const ourservice = await Service.find();
+
+    return resp.render('adminservices', {
+        ourservices: ourservice
+    })
 })
 
 routers.get('/sign-up', (req, resp) => {

@@ -15,7 +15,32 @@
 <body>
     {{>adminsidebarpartial}}
     {{>admintopbarpartial}}
-    this ourwork partial
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>imageURL</th>
+                        <th>Title</th>
+                        <th>siteLink</th>
+                        <th>createAt</th>
+
+                    </tr>
+                </thead>
+                {{#each ourwork}}
+                <tbody>
+                    <tr>
+                        <td>{{this.imgUrl}}</td>
+                        <td>{{this.title}}</td>
+                        <td>{{this.siteLink}}</td>
+                        <td>{{this.date}}</td>
+
+                    </tr>
+                </tbody>
+                {{/each}}
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>
