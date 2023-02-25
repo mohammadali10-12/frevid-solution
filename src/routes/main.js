@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 routers.use(cookieParser());
 
+
 const jwt = require('jsonwebtoken');
 const session = require('express-session');
 routers.use(session({
@@ -14,6 +15,7 @@ routers.use(session({
     resave: false,
     saveUninitialized: false,
 }));
+
 
 const Web = require('../db/model/web');
 const Branding = require('../db/model/branding');
@@ -128,6 +130,33 @@ routers.get('/adminOurwork', async (req, resp) => {
         ourwork: ourwork
     })
 })
+
+//update data in ourwork 
+routers.post('/ourworkedit/:id', async (req, resp) => {
+    try {
+        const _id = req.params.id;
+        const ourworkdata = await ourWork.findByIdAndUpdate(_id, req.body);
+        resp.status(201);
+        resp.send('update data');
+
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+})
+
+//delete data in ourwork
+
+routers.post('/ourworkedit/delete/:id', async (req, resp) => {
+    try {
+        const _id = req.params.id;
+        const ourworkdata = await ourWork.findByIdAndDelete(_id, req.body);
+        resp.status(201).redirect('/adminourwork');
+       
+    } catch (error) {
+        resp.status(500).send(error);
+    }
+})
+
 routers.get('/adminservices', async (req, resp) => {
 
     const ourservice = await Service.find();

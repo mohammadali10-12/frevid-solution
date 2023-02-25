@@ -34,9 +34,21 @@
                         <td>{{this.title}}</td>
                         <td>{{this.siteLink}}</td>
                         <td>{{this.date}}</td>
+                        <td>
+                            <form action="/ourworkedit/{{this._id}}" method="post" class="d-inline">
+                                <button type="submit" class="fa-regular fa-pen-to-square"></button>
+                                {{!-- <i class="fa-regular fa-pen-to-square"></i> --}}
+                            </form>
+                            <form action="/ourworkedit/delete/{{this._id}}" method="post" class="d-inline">
 
+                                <button type="submit" class="fa-solid fa-trash"
+                                    onclick="return confirm('are you sure this data is deleted ?');"></button>
+                            </form>
+                        </td>
                     </tr>
+
                 </tbody>
+
                 {{/each}}
             </table>
         </div>
