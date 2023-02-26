@@ -16,7 +16,6 @@ routers.use(session({
     saveUninitialized: false,
 }));
 
-
 const Web = require('../db/model/web');
 const Branding = require('../db/model/branding');
 const Development = require('../db/model/development');
@@ -27,11 +26,7 @@ const SignUp = require('../db/model/sign-up');
 const auth = require('../db/middleware/auth');
 const async = require('hbs/lib/async');
 
-
-
-
 // all routes
-
 routers.get('/', async (req, resp) => {
     const isLoggedIn = req.session.isLoggedIn || false;
 
@@ -40,7 +35,6 @@ routers.get('/', async (req, resp) => {
     return resp.render('index', {
         isLoggedIn,
         services: services,
-        // loggedin: hbscontent
     })
 
 })
@@ -48,7 +42,6 @@ routers.get('/', async (req, resp) => {
 routers.get('/about', (req, resp) => {
     const isLoggedIn = req.session.isLoggedIn || false;
 
-    // console.log(req.cookies);
     return resp.render('about', { isLoggedIn })
 })
 
@@ -82,7 +75,6 @@ routers.get('/service/branding', async (req, resp) => {
 routers.get('/service/web-development', async (req, resp) => {
     const isLoggedIn = req.session.isLoggedIn || false;
 
-
     const Developments = await Development.find({})
 
     return resp.render('web-development', {
@@ -110,7 +102,6 @@ routers.get('/ourwork', async (req, resp) => {
 })
 
 //admin router 
-
 routers.get('/admin', auth, (req, resp) => {
     return resp.render('admin');
 })
@@ -123,6 +114,7 @@ routers.get('/user', async (req, resp) => {
     });
 })
 
+//admin ourwork router
 routers.get('/adminOurwork', async (req, resp) => {
 
     const ourwork = await ourWork.find();
@@ -131,13 +123,38 @@ routers.get('/adminOurwork', async (req, resp) => {
     })
 })
 
+//add data in ourwork
+
+routers.get('/addDataourwork', (req, resp) => {
+    return resp.render('addDataourwork');
+})
+
+routers.post('/addDataourwork', async (req, resp) => {
+    try {
+        const { imgUrl, title, siteLink } = req.body
+
+        const addData = new ourWork({ imgUrl, title, siteLink });
+        const add = await addData.save();
+        resp.status(201).redirect('/adminourwork');
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+})
+
 //update data in ourwork 
-routers.post('/ourworkedit/:id', async (req, resp) => {
+routers.get('/updateDataourwork/:id', async (req, resp) => {
+
+    const editData = await ourWork.findById(req.params.id);
+    return resp.render('updateDataourwork', {
+        data: editData
+    });
+})
+
+routers.post('/updateDataourwork/:id', async (req, resp) => {
     try {
         const _id = req.params.id;
         const ourworkdata = await ourWork.findByIdAndUpdate(_id, req.body);
-        resp.status(201);
-        resp.send('update data');
+        resp.status(201).redirect('/adminOurwork');
 
     } catch (error) {
         resp.status(500).send(error)
@@ -146,17 +163,18 @@ routers.post('/ourworkedit/:id', async (req, resp) => {
 
 //delete data in ourwork
 
-routers.post('/ourworkedit/delete/:id', async (req, resp) => {
+routers.post('/ourworkdelete/delete/:id', async (req, resp) => {
     try {
         const _id = req.params.id;
         const ourworkdata = await ourWork.findByIdAndDelete(_id, req.body);
         resp.status(201).redirect('/adminourwork');
-       
+
     } catch (error) {
         resp.status(500).send(error);
     }
 })
 
+//admin services router
 routers.get('/adminservices', async (req, resp) => {
 
     const ourservice = await Service.find();
@@ -164,6 +182,23 @@ routers.get('/adminservices', async (req, resp) => {
     return resp.render('adminservices', {
         ourservices: ourservice
     })
+})
+
+//update data in sevices
+routers.get('/updateDataservices/:id', async (req, resp) => {
+    const editData = await Service.findById(req.params.id);
+    resp.render('updateDataservices', {
+        data: editData
+    })
+})
+routers.post('/updateDataservices/:id', async (req, resp) => {
+    try {
+        const _id = req.params.id;
+        const servicesdata = await Service.findByIdAndUpdate(_id, req.body);
+        resp.status(201).redirect('/adminservices')
+    } catch (error) {
+        resp.status(500).send(error)
+    }
 })
 
 routers.get('/sign-up', (req, resp) => {
@@ -192,20 +227,15 @@ routers.post('/sign-up', async (req, resp) => {
                 expires: new Date(Date.now() + 200000),
                 httpOnly: false,
             });
-
             const register = await signUpData.save();
-
             return resp.status(201).redirect('/login');
         }
-
-
     } catch (error) {
         return resp.status(400).send(error)
     }
 })
 
 //login router
-
 routers.get('/login', (req, resp) => {
     resp.render('login')
 })
@@ -230,27 +260,21 @@ routers.post('/login', async (req, resp) => {
             expires: new Date(Date.now() + 1000000),
             httpOnly: false,
         });
-
-
         if (adminEmail === email) {
             resp.status(200);
             return resp.redirect('/admin');
         }
         if (isMatch) {
-
             return resp.status(200).redirect('/');
         } else {
             return resp.status(400).render('login', { error: 'wrong login detail' });
         }
-
     } catch (error) {
         resp.status(400).render('login', { error: 'wrong login detail' });
     }
 })
 
-
 //log-out router
-
 routers.get('/logout', auth, async (req, resp) => {
     try {
         req.session.isLoggedIn = false;
@@ -260,14 +284,10 @@ routers.get('/logout', auth, async (req, resp) => {
         console.log('logout successfully');
         await req.user.save();
         return resp.render('login');
-
-
     } catch (error) {
-
         resp.status(500).send(error);
     }
 })
-
 
 routers.post('/form-submit', async (req, resp) => {
     try {
@@ -275,15 +295,11 @@ routers.post('/form-submit', async (req, resp) => {
         const { name, email, number, message, services } = req.body;
         const contact = new User({ name, email, number, message, services });
 
-
         const data = await contact.save()
 
         resp.status(201).redirect('/')
-
-
     } catch (e) {
         resp.status(500).send(e);
-
     }
 
 })
@@ -296,4 +312,3 @@ module.exports = routers
 
 
 
-//when user login after navbar in show logout and remove login in node js and express js with handelbar and cookies?

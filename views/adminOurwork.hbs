@@ -15,6 +15,7 @@
 <body>
     {{>adminsidebarpartial}}
     {{>admintopbarpartial}}
+   <h1 style="color:rgb(119, 119, 231);text-align:center;padding:30px">OUR WORK TABLE</h1>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -24,7 +25,7 @@
                         <th>Title</th>
                         <th>siteLink</th>
                         <th>createAt</th>
-
+                        <th><a class="btn btn-primary" href="/addDataourwork">create new</a></th>
                     </tr>
                 </thead>
                 {{#each ourwork}}
@@ -35,13 +36,13 @@
                         <td>{{this.siteLink}}</td>
                         <td>{{this.date}}</td>
                         <td>
-                            <form action="/ourworkedit/{{this._id}}" method="post" class="d-inline">
-                                <button type="submit" class="fa-regular fa-pen-to-square"></button>
+                            <form action="/updateDataourwork/{{this._id}}" method="get" class="d-inline">
+                                <button type="submit" class="fa-regular fa-pen-to-square" style="color:blue"></button>
                                 {{!-- <i class="fa-regular fa-pen-to-square"></i> --}}
                             </form>
-                            <form action="/ourworkedit/delete/{{this._id}}" method="post" class="d-inline">
+                            <form action="/ourworkdelete/delete/{{this._id}}" method="post" class="d-inline">
 
-                                <button type="submit" class="fa-solid fa-trash"
+                                <button type="submit" class="fa-solid fa-trash" style="color:red"
                                     onclick="return confirm('are you sure this data is deleted ?');"></button>
                             </form>
                         </td>
