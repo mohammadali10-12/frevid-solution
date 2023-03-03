@@ -30,11 +30,13 @@ const async = require('hbs/lib/async');
 routers.get('/', async (req, resp) => {
     const isLoggedIn = req.session.isLoggedIn || false;
 
-    const services = await Service.find({})
+    const services = await Service.find({});
+    const getUser = await SignUp.find();
 
     return resp.render('index', {
         isLoggedIn,
         services: services,
+        getUserData: getUser
     })
 
 })
@@ -135,7 +137,7 @@ routers.post('/addDataourwork', async (req, resp) => {
 
         const addData = new ourWork({ imgUrl, title, siteLink });
         const add = await addData.save();
-        resp.status(201).redirect('/adminourwork');
+        return resp.status(201).redirect('/adminourwork');
     } catch (error) {
         resp.status(500).send(error)
     }
@@ -154,7 +156,7 @@ routers.post('/updateDataourwork/:id', async (req, resp) => {
     try {
         const _id = req.params.id;
         const ourworkdata = await ourWork.findByIdAndUpdate(_id, req.body);
-        resp.status(201).redirect('/adminOurwork');
+        return resp.status(201).redirect('/adminOurwork');
 
     } catch (error) {
         resp.status(500).send(error)
@@ -167,7 +169,7 @@ routers.post('/ourworkdelete/delete/:id', async (req, resp) => {
     try {
         const _id = req.params.id;
         const ourworkdata = await ourWork.findByIdAndDelete(_id, req.body);
-        resp.status(201).redirect('/adminourwork');
+        return resp.status(201).redirect('/adminourwork');
 
     } catch (error) {
         resp.status(500).send(error);
@@ -184,10 +186,28 @@ routers.get('/adminservices', async (req, resp) => {
     })
 })
 
+//add data in services
+
+routers.get('/addDataservices', async (res, resp) => {
+    return resp.render('addDataservices');
+})
+
+routers.post('/addDataservices', async (req, resp) => {
+    try {
+        const { imgUrl, title, subTitle, link } = req.body;
+        const addData = new Service({ imgUrl, title, subTitle, link })
+        const add = await addData.save();
+        return resp.status(200).redirect('/adminservices');
+
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+})
+
 //update data in sevices
 routers.get('/updateDataservices/:id', async (req, resp) => {
     const editData = await Service.findById(req.params.id);
-    resp.render('updateDataservices', {
+    return resp.render('updateDataservices', {
         data: editData
     })
 })
@@ -195,7 +215,19 @@ routers.post('/updateDataservices/:id', async (req, resp) => {
     try {
         const _id = req.params.id;
         const servicesdata = await Service.findByIdAndUpdate(_id, req.body);
-        resp.status(201).redirect('/adminservices')
+        return resp.status(201).redirect('/adminservices')
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+})
+
+//  delete data in services 
+
+routers.post('/servicesdelete/delete/:id', async (req, resp) => {
+    try {
+        const _id = req.params.id;
+        const servicesdata = await Service.findByIdAndDelete(_id, req.body);
+        return resp.status(201).redirect('/adminservices')
     } catch (error) {
         resp.status(500).send(error)
     }
