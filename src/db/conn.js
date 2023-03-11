@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 
-const uri =process.env.DB_CONNECTION;
+const uri ="mongodb://localhost:27017/Frevid_DB";
 
 const options = {
   useNewUrlParser: true,
