@@ -7,7 +7,8 @@ const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 routers.use(cookieParser());
 
-
+const randomstring = require('randomstring');
+const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
 const session = require('express-session');
 routers.use(session({
@@ -21,10 +22,11 @@ const Branding = require('../db/model/branding');
 const Development = require('../db/model/development');
 const Service = require('../db/model/service');
 const User = require('../db/model/contact');
-const ourWork = require('../../views/ourwork');
+const ourWork = require('../db/model/ourwork');
 const SignUp = require('../db/model/sign-up');
 const auth = require('../db/middleware/auth');
 const async = require('hbs/lib/async');
+const { send } = require('process');
 
 // all routes
 routers.get('/', async (req, resp) => {
@@ -100,7 +102,7 @@ routers.get('/ourwork', async (req, resp) => {
 
     const isLoggedIn = req.session.isLoggedIn || false;
 
-    const workDetail = await ourWork.find({})
+    const workDetail = await ourWork.find()
     return resp.render('ourwork', {
         isLoggedIn,
         ourWork: workDetail,
@@ -339,7 +341,6 @@ routers.post('/form-submit', async (req, resp) => {
     } catch (e) {
         resp.status(500).send(e);
     }
-
 })
 
 //branding_booking router
@@ -360,9 +361,79 @@ routers.get('/developmentBooking', (req, resp) => {
     return resp.render('developmentBooking');
 })
 
+//forgot password
+
+routers.get('/forgotpassword', (req, resp) => {
+    return resp.render('forgotpassword');
+})
+
+routers.post('/forgotpassword', async (req, resp) => {
+    try {
+        const email = req.body.email;
+        const userData = await SignUp.findOne({ email: email });
+        if (userData) {
+            const randomstrings = randomstring.generate();
+            const updatepassword = await SignUp.updateOne({ email: email }, { $set: { token: randomstring } });
+            sendMail(userData.email, randomstrings);
+            resp.render('forgotpassword', { message: 'please check your mail to reset your password' });
+        } else {
+            resp.render('forgotpassword', { message: 'user email is incorrect' });
+        }
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+})
+
+routers.get('/newpassword/:token', async (req, resp) => {
+    const token = req.body.token;
+    const tokenData = await SignUp.findOne({ token: token });
+    if (tokenData) {
+        resp.render('newpassword', { user_id: tokenData._id })
+    } else {
+        resp.render('Error')
+    }
+})
+
+//reset password 
+
+routers.post('/newpassword/:token', async (req, resp) => {
+    try {
+        const password = req.body.password;
+        const _id = req.params.id;
+        const secure_password = await bcrypt.hash(password, 10);
+        const updateData = await SignUp.findByIdAndUpdate(_id, { $set: { password: secure_password, token: "" } });
+
+        resp.redirect('/login')
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+})
 routers.get('*', (req, resp) => {
     resp.render('error')
 })
+
+
+
+const sendMail = async (email, token) => {
+
+    let transpoter = await nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'mahammadalisunasara06@gmail.com', // generated ethereal user
+            pass: 'uymsafbnaxxohelh'
+        },
+    });
+
+    let info = await transpoter.sendMail({
+        from: '"mohammadali 👻" <foo@example.com>', // sender address
+        to: email,// list of receivers
+        subject: "reset password", // Subject line
+        text: "this is my first mail", // plain text body
+        html: `<a href="http://localhost:4200/newpassword/${token}">To reset password</a>` // html body
+    });
+    console.log("Message sent: %s", info.messageId);
+    console.log(info);
+}
 
 module.exports = routers
 
