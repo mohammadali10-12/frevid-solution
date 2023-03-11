@@ -342,6 +342,24 @@ routers.post('/form-submit', async (req, resp) => {
 
 })
 
+//branding_booking router
+
+routers.get('/brandingBooking', (req, resp) => {
+    return resp.render('brandingBooking');
+})
+
+//web design booking router
+
+routers.get('/webBooking', (req, resp) => {
+    return resp.render('webBooking');
+})
+
+//web development booking
+
+routers.get('/developmentBooking', (req, resp) => {
+    return resp.render('developmentBooking');
+})
+
 routers.get('*', (req, resp) => {
     resp.render('error')
 })
