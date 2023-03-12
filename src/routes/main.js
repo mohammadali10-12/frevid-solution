@@ -46,11 +46,11 @@ routers.get('/about', (req, resp) => {
 
     return resp.render('about', { isLoggedIn })
 })
-routers.get('/branding_booking', (req, resp) => {
-    const isLoggedIn = req.session.isLoggedIn || false;
+// routers.get('/brandingbooking', (req, resp) => {
+//     const isLoggedIn = req.session.isLoggedIn || false;
 
-    return resp.render('/branding_booking', { isLoggedIn })
-})
+//     return resp.render('/brandingbooking', { isLoggedIn })
+// })
 
 routers.get('/service', (req, resp) => {
     const isLoggedIn = req.session.isLoggedIn || false;
