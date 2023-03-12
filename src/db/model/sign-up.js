@@ -17,8 +17,9 @@ const signUpSchema = new mongoose.Schema({
         default: "USER",
     },
     tokens: [{
-        token: { type: String, require: true }
-    }]
+        token: { type: String, require: true, default: '' }
+    }],
+
 });
 
 
@@ -35,9 +36,9 @@ signUpSchema.methods.genrateToken = async function () {
 }
 
 signUpSchema.pre("save", async function (next) {
-    if (this.isModified('password')) {
-        this.password = await bcrypt.hash(this.password, 10);
-    }
+
+    this.password = await bcrypt.hash(this.password, 10);
+
     next();
 })
 
