@@ -6,9 +6,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const signUpSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    name: { type: String, require: true },
+    email: { type: String, require: true, unique: true },
+    password: { type: String, require: true },
     creatAt: { type: Date, default: Date.now },
     isActive: { type: Boolean },
     role: {

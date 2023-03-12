@@ -25,8 +25,11 @@ const User = require('../db/model/contact');
 const ourWork = require('../db/model/ourwork');
 const SignUp = require('../db/model/sign-up');
 const auth = require('../db/middleware/auth');
-const async = require('hbs/lib/async');
-const { send } = require('process');
+const BrandingBooking = require('../db/model/brandingBooking');
+const WebBooking = require('../db/model/webBooking');
+const DevelopmentBooking = require('../db/model/developmentBooking');
+// const async = require('hbs/lib/async');
+// const { send } = require('process');
 
 // all routes
 routers.get('/', async (req, resp) => {
@@ -345,21 +348,121 @@ routers.post('/form-submit', async (req, resp) => {
 
 //branding_booking router
 
-routers.get('/brandingBooking', (req, resp) => {
-    return resp.render('brandingBooking');
-})
+routers.get('/brandingBooking', auth, (req, resp) => {
+    const isLoggedIn = req.session.isLoggedIn || false;
+    return resp.render('brandingBooking', { isLoggedIn });
+});
 
+routers.post('/brandindBooking', async (req, resp) => {
+    try {
+        const { name, email, number, budget, businesstype } = req.body;
+        const Booking = new BrandingBooking({ name, email, number, budget, businesstype });
+        const BookingData = await Booking.save();
+        sendBrandingBookingMail(email, name, budget, businesstype);
+        resp.status(201).redirect('/');
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+});
+
+const sendBrandingBookingMail = async (email, name, budget, businesstype) => {
+
+    let transpoter = await nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'mahammadalisunasara06@gmail.com', // generated ethereal user
+            pass: 'uymsafbnaxxohelh'
+        },
+    });
+
+    let info = await transpoter.sendMail({
+        from: '"mohammadali 👻" <foo@example.com>', // sender address
+        to: email,// list of receivers
+        subject: "you selected branding service ", // Subject line
+        text: `welcome ${name} your service budget ${budget} and your bussiness Type is ${businesstype}`, // plain text body
+        // html body
+    });
+    console.log("Message sent: %s", info.messageId);
+    console.log(info);
+}
 //web design booking router
 
-routers.get('/webBooking', (req, resp) => {
-    return resp.render('webBooking');
-})
+routers.get('/webBooking', auth, (req, resp) => {
+    const isLoggedIn = req.session.isLoggedIn || false;
+    return resp.render('webBooking', { isLoggedIn });
+});
 
+routers.post('/webdBooking', async (req, resp) => {
+    try {
+        const { name, email, number, budget, businesstype } = req.body;
+        const Booking = new WebBooking({ name, email, number, budget, businesstype });
+        const BookingData = await Booking.save();
+        sendWebgBookingMail(email, name, budget, businesstype);
+        resp.status(201).redirect('/');
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+});
+
+const sendWebgBookingMail = async (email, name, budget, businesstype) => {
+
+    let transpoter = await nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'mahammadalisunasara06@gmail.com', // generated ethereal user
+            pass: 'uymsafbnaxxohelh'
+        },
+    });
+
+    let info = await transpoter.sendMail({
+        from: '"mohammadali 👻" <foo@example.com>', // sender address
+        to: email,// list of receivers
+        subject: "you selected web Designing service ", // Subject line
+        text: `welcome ${name} your service budget ${budget} and your bussiness Type is ${businesstype}`, // plain text body
+        // html body
+    });
+    console.log("Message sent: %s", info.messageId);
+    console.log(info);
+}
 //web development booking
 
-routers.get('/developmentBooking', (req, resp) => {
-    return resp.render('developmentBooking');
-})
+routers.get('/developmentBooking', auth, (req, resp) => {
+    const isLoggedIn = req.session.isLoggedIn || false;
+    return resp.render('developmentBooking', { isLoggedIn });
+});
+
+routers.post('/developmentdBooking', async (req, resp) => {
+    try {
+        const { name, email, number, budget, businesstype } = req.body;
+        const Booking = new DevelopmentBooking({ name, email, number, budget, businesstype });
+        const BookingData = await Booking.save();
+        sendDevelopmentgBookingMail(email, name, budget, businesstype);
+        resp.status(201).redirect('/');
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+});
+
+const sendDevelopmentgBookingMail = async (email, name, budget, businesstype) => {
+
+    let transpoter = await nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'mahammadalisunasara06@gmail.com', // generated ethereal user
+            pass: 'uymsafbnaxxohelh'
+        },
+    });
+
+    let info = await transpoter.sendMail({
+        from: '"mohammadali 👻" <foo@example.com>', // sender address
+        to: email,// list of receivers
+        subject: "you selected web Development service ", // Subject line
+        text: `welcome ${name} your service budget ${budget} and your bussiness Type is ${businesstype}`, // plain text body
+        // html body
+    });
+    console.log("Message sent: %s", info.messageId);
+    console.log(info);
+}
 
 //forgot password
 
@@ -433,7 +536,8 @@ const sendMail = async (email, token) => {
     });
     console.log("Message sent: %s", info.messageId);
     console.log(info);
-}
+};
+
 
 module.exports = routers
 
