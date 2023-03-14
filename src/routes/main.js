@@ -243,6 +243,114 @@ routers.post('/servicesdelete/delete/:id', async (req, resp) => {
     }
 })
 
+// admin branding_Booking
+routers.get('/adminBrandingBooking', async (req, resp) => {
+    const Data = await BrandingBooking.find({})
+    return resp.render('adminBrandingBooking', {
+        data: Data
+    });
+})
+
+// Remove user in Branding_Booking
+routers.post('/adminBrandingBooking/delete/:id', async (req, resp) => {
+    try {
+        const _id = req.params.id;
+        const bookingData = await BrandingBooking.findByIdAndDelete(_id, req.body);
+        return resp.status(201).redirect('/adminBrandingBooking');
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+})
+
+// send mail in Branding Booking
+
+routers.get('/sendBrandingMail/:id', async (req, resp) => {
+    const sendMail = await BrandingBooking.findById(req.params.id);
+    return resp.render('sendBrandingMail', {
+        data: sendMail
+    });
+})
+
+routers.post('/sendBrandingMail', async (req, resp) => {
+    try {
+        const { email, message } = req.body;
+        const send = new BrandingBooking({ email, message });
+        sendUserBrandingBookingMail(email, message);
+        resp.status(201).redirect('adminBrandingBooking')
+    } catch (error) {
+
+    }
+});
+
+const sendUserBrandingBookingMail = async (email, message) => {
+
+    let transpoter = await nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'mahammadalisunasara06@gmail.com', // generated ethereal user
+            pass: 'uymsafbnaxxohelh'
+        },
+    });
+
+    let info = await transpoter.sendMail({
+        from: '"mohammadali 👻" <foo@example.com>', // sender address
+        to: email,// list of receivers
+        subject: "you selected branding service ", // Subject line
+        text: message, // plain text body
+        // html body
+    });
+}
+// admin Web_Booking
+routers.get('/adminWebBooking', async (req, resp) => {
+    const Data = await WebBooking.find()
+    return resp.render('adminWebBooking', {
+        data: Data
+    });
+})
+
+routers.get('/sendWebDesignMail/:id', async (req, resp) => {
+    const sendMail = await WebBooking.findById(req.params.id);
+    return resp.render('sendBrandingMail', {
+        data: sendMail
+    });
+})
+
+routers.post('/sendWebDesigngMail', async (req, resp) => {
+    try {
+        const { email, message } = req.body;
+        const send = new BrandingBooking({ email, message });
+        sendUserWebBookingMail(email, message);
+        resp.status(201).redirect('adminWebBooking')
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+});
+
+const sendUserWebBookingMail = async (email, message) => {
+
+    let transpoter = await nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'mahammadalisunasara06@gmail.com', // generated ethereal user
+            pass: 'uymsafbnaxxohelh'
+        },
+    });
+
+    let info = await transpoter.sendMail({
+        from: '"mohammadali 👻" <foo@example.com>', // sender address
+        to: email,// list of receivers
+        subject: "you selected web-Design service ", // Subject line
+        text: message, // plain text body
+    });
+
+}
+
+// Admin Development_Booking
+routers.get('/adminDevelopmentBooking', (req, resp) => {
+    return resp.render('adminDevelopmentBooking');
+})
+
+// Sign-Up router
 routers.get('/sign-up', (req, resp) => {
     return resp.render('sign-up');
 })
@@ -324,7 +432,6 @@ routers.get('/logout', auth, async (req, resp) => {
         req.session.token = null;
 
         resp.clearCookie('jwt');
-        console.log('logout successfully');
         await req.user.save();
         return resp.render('login');
     } catch (error) {

@@ -36,9 +36,11 @@ signUpSchema.methods.genrateToken = async function () {
 }
 
 signUpSchema.pre("save", async function (next) {
-
-    this.password = await bcrypt.hash(this.password, 10);
-
+    if (this.isModified('password')) {
+        console.log('pre password' + this.password);
+        this.password = await bcrypt.hash(this.password, 10);
+        console.log('pre password' + this.password);
+    }
     next();
 })
 
