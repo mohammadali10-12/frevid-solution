@@ -611,7 +611,7 @@ const sendWebgBookingMail = async (email, name, budget, businesstype) => {
 }
 //web development booking
 
-routers.get('/developmentBooking', auth, (req, resp) => {
+routers.get('/developmentBooking',(req, resp) => {
     const isLoggedIn = req.session.isLoggedIn || false;
     return resp.render('developmentBooking', { isLoggedIn });
 });
