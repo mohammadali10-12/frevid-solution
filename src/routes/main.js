@@ -28,8 +28,19 @@ const auth = require('../db/middleware/auth');
 const BrandingBooking = require('../db/model/brandingBooking');
 const WebBooking = require('../db/model/webBooking');
 const DevelopmentBooking = require('../db/model/developmentBooking');
-// const async = require('hbs/lib/async');
-// const { send } = require('process');
+
+// file upload
+// const multer = require('multer');
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         return cb(null, './public/images/')
+//     },
+//     filename: function (req, file, cb) {
+//         cb(null, file.fieldname + '-'+ file.originalname);
+//     }
+// })
+
+// const upload = multer({ storage: storage });
 
 // all routes
 routers.get('/', async (req, resp) => {
@@ -141,10 +152,12 @@ routers.get('/addDataourwork', (req, resp) => {
     return resp.render('addDataourwork');
 })
 
-routers.post('/addDataourwork', async (req, resp) => {
+routers.post('/addDataourwork',  async (req, resp) => {
     try {
-        const { imgUrl, title, siteLink } = req.body
-
+        console.log(req.body);
+        console.log(req.file);
+        const { title, siteLink } = req.body
+        imgUrl = req.file.filename
         const addData = new ourWork({ imgUrl, title, siteLink });
         const add = await addData.save();
         return resp.status(201).redirect('/adminourwork');
@@ -162,7 +175,7 @@ routers.get('/updateDataourwork/:id', async (req, resp) => {
     });
 })
 
-routers.post('/updateDataourwork/:id', async (req, resp) => {
+routers.post('/updateDataourwork/:id',  async (req, resp) => {
     try {
         const _id = req.params.id;
         const ourworkdata = await ourWork.findByIdAndUpdate(_id, req.body);
@@ -376,7 +389,7 @@ routers.post('/adminDevelopmentBooking/delete/:id', async (req, resp) => {
         resp.status(500).send(error)
     }
 })
- 
+
 //send mail in web-Development
 routers.get('/sendDevelopmentMail/:id', async (req, resp) => {
     const sendMail = await DevelopmentBooking.findById(req.params.id);
@@ -598,7 +611,7 @@ const sendWebgBookingMail = async (email, name, budget, businesstype) => {
 }
 //web development booking
 
-routers.get('/developmentBooking', auth, (req, resp) => {
+routers.get('/developmentBooking',(req, resp) => {
     const isLoggedIn = req.session.isLoggedIn || false;
     return resp.render('developmentBooking', { isLoggedIn });
 });
