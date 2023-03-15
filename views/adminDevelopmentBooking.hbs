@@ -15,7 +15,39 @@
 <body>
     {{>adminsidebarpartial}}
     {{>admintopbarpartial}}
-    <h1>admin Web-development Booking</h1>
+    <h1 style="color:rgb(119, 119, 231);text-align:center;padding:30px">Branding_Booking TABLE</h1>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>budget</th>
+                        <th>businesstype</th>
+                    </tr>
+                </thead>
+                {{#each data}}
+                <tbody>
+                    <tr>
+                        <td>{{this.email}}</td>
+                        <td>{{this.budget}}</td>
+                        <td>{{this.businesstype}}</td>
+
+                        <td>
+                            {{!-- <a class="btn btn-primary" href="/sendBrandingMail"></a> --}}
+                            <a class="fa-solid fa-share" href="/sendDevelopmentMail/{{this._id}}"></a>
+                            <form action="/adminDevelopmentBooking/delete/{{this._id}}" method="post" class="d-inline">
+
+                                <button type="submit" class="fa-solid fa-trash" style="color:red"
+                                    onclick="return confirm('are you sure this data is deleted ?');"></button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+                {{/each}}
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>

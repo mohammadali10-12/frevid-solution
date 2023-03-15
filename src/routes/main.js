@@ -276,8 +276,10 @@ routers.post('/sendBrandingMail', async (req, resp) => {
         const { email, message } = req.body;
         const send = new BrandingBooking({ email, message });
         sendUserBrandingBookingMail(email, message);
-        resp.status(201).redirect('adminBrandingBooking')
+        resp.status(201).redirect('/adminBrandingBooking')
     } catch (error) {
+
+
 
     }
 });
@@ -307,15 +309,26 @@ routers.get('/adminWebBooking', async (req, resp) => {
         data: Data
     });
 })
+// Remove user in Web-Design_Booking
+routers.post('/adminWebBooking/delete/:id', async (req, resp) => {
+    try {
+        const _id = req.params.id;
+        const bookingData = await WebBooking.findByIdAndDelete(_id, req.body);
+        return resp.status(201).redirect('/adminWebBooking');
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+})
 
+//send mail in web-design
 routers.get('/sendWebDesignMail/:id', async (req, resp) => {
     const sendMail = await WebBooking.findById(req.params.id);
-    return resp.render('sendBrandingMail', {
+    return resp.render('sendWebDesignMail', {
         data: sendMail
     });
 })
 
-routers.post('/sendWebDesigngMail', async (req, resp) => {
+routers.post('/sendWebDesignMail', async (req, resp) => {
     try {
         const { email, message } = req.body;
         const send = new BrandingBooking({ email, message });
@@ -346,10 +359,62 @@ const sendUserWebBookingMail = async (email, message) => {
 }
 
 // Admin Development_Booking
-routers.get('/adminDevelopmentBooking', (req, resp) => {
-    return resp.render('adminDevelopmentBooking');
+routers.get('/adminDevelopmentBooking', async (req, resp) => {
+    const Data = await DevelopmentBooking.find()
+    return resp.render('adminDevelopmentBooking', {
+        data: Data
+    });
 })
 
+// Remove user in Development_Booking
+routers.post('/adminDevelopmentBooking/delete/:id', async (req, resp) => {
+    try {
+        const _id = req.params.id;
+        const bookingData = await DevelopmentBooking.findByIdAndDelete(_id, req.body);
+        return resp.status(201).redirect('/adminDevelopmentBooking');
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+})
+ 
+//send mail in web-Development
+routers.get('/sendDevelopmentMail/:id', async (req, resp) => {
+    const sendMail = await DevelopmentBooking.findById(req.params.id);
+    return resp.render('sendDevelopmentMail', {
+        data: sendMail
+    });
+})
+
+
+routers.post('/sendDevelopmentMail', async (req, resp) => {
+    try {
+        const { email, message } = req.body;
+        const send = new DevelopmentBooking({ email, message });
+        sendUserDevelopmentBookingMail(email, message);
+        resp.status(201).redirect('/adminDevelopmentBooking')
+    } catch (error) {
+        resp.status(500).send(error)
+    }
+});
+
+const sendUserDevelopmentBookingMail = async (email, message) => {
+
+    let transpoter = await nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'mahammadalisunasara06@gmail.com', // generated ethereal user
+            pass: 'uymsafbnaxxohelh'
+        },
+    });
+
+    let info = await transpoter.sendMail({
+        from: '"mohammadali 👻" <foo@example.com>', // sender address
+        to: email,// list of receivers
+        subject: "you selected Web Development service ", // Subject line
+        text: message, // plain text body
+    });
+
+}
 // Sign-Up router
 routers.get('/sign-up', (req, resp) => {
     return resp.render('sign-up');
