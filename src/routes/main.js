@@ -550,7 +550,7 @@ const sendBrandingBookingMail = async (email, name, budget, businesstype) => {
     let info = await transpoter.sendMail({
         from: '"mohammadali 👻" <foo@example.com>', // sender address
         to: email,// list of receivers
-        subject: "you selected branding service ", // Subject line
+        subject: "confimation mail for selected branding service ", // Subject line
         text: `welcome ${name} your service budget ${budget} and your bussiness Type is ${businesstype}`, // plain text body
         // html body
     });
