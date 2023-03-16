@@ -152,7 +152,7 @@ routers.get('/addDataourwork', (req, resp) => {
     return resp.render('addDataourwork');
 })
 
-routers.post('/addDataourwork',  async (req, resp) => {
+routers.post('/addDataourwork', async (req, resp) => {
     try {
         console.log(req.body);
         console.log(req.file);
@@ -175,7 +175,7 @@ routers.get('/updateDataourwork/:id', async (req, resp) => {
     });
 })
 
-routers.post('/updateDataourwork/:id',  async (req, resp) => {
+routers.post('/updateDataourwork/:id', async (req, resp) => {
     try {
         const _id = req.params.id;
         const ourworkdata = await ourWork.findByIdAndUpdate(_id, req.body);
@@ -611,7 +611,7 @@ const sendWebgBookingMail = async (email, name, budget, businesstype) => {
 }
 //web development booking
 
-routers.get('/developmentBooking',(req, resp) => {
+routers.get('/developmentBooking', (req, resp) => {
     const isLoggedIn = req.session.isLoggedIn || false;
     return resp.render('developmentBooking', { isLoggedIn });
 });
