@@ -563,8 +563,27 @@ const sendBrandingBookingMail = async (email, name, budget, businesstype) => {
     let info = await transpoter.sendMail({
         from: '"mohammadali 👻" <foo@example.com>', // sender address
         to: email,// list of receivers
-        subject: "you selected branding service ", // Subject line
-        text: `welcome ${name} your service budget ${budget} and your bussiness Type is ${businesstype}`, // plain text body
+        subject: "confimation mail for selected branding service ", // Subject line
+        text: `Dear ${name},
+
+        Thank you for choosing our booking service for your branding-Booking needs. We are excited to confirm your booking
+
+        
+        Just to reconfirm, the details of your booking are as follows:
+        Name: Mr. ${name}
+        Service Type: branding-Bookoing
+        Budget: ${budget}
+        bussiness-Type is ${businesstype}
+
+
+        We have noted your budget and will ensure that we provide you with the best possible service within your budget constraints.
+
+        If you have any further questions or concerns, please do not hesitate to contact us. We will be more than happy to assist you.
+
+        Thank you for choosing our booking service, and we look forward to serving you soon.
+
+        Best regards,
+        Frevid solutions`, // plain text body
         // html body
     });
     console.log("Message sent: %s", info.messageId);
@@ -603,7 +622,26 @@ const sendWebgBookingMail = async (email, name, budget, businesstype) => {
         from: '"mohammadali 👻" <foo@example.com>', // sender address
         to: email,// list of receivers
         subject: "you selected web Designing service ", // Subject line
-        text: `welcome ${name} your service budget ${budget} and your bussiness Type is ${businesstype}`, // plain text body
+        text: `Dear ${name},
+
+        Thank you for choosing our booking service for your Web-Booking needs. We are excited to confirm your booking
+
+        
+        Just to reconfirm, the details of your booking are as follows:
+        Name: Mr. ${name}
+        Service Type: Web-Booking
+        Budget: ${budget}
+        bussiness-Type is ${businesstype}
+
+
+        We have noted your budget and will ensure that we provide you with the best possible service within your budget constraints.
+
+        If you have any further questions or concerns, please do not hesitate to contact us. We will be more than happy to assist you.
+
+        Thank you for choosing our booking service, and we look forward to serving you soon.
+
+        Best regards,
+        Frevid solutions`, // plain text body
         // html body
     });
     console.log("Message sent: %s", info.messageId);
@@ -642,7 +680,26 @@ const sendDevelopmentgBookingMail = async (email, name, budget, businesstype) =>
         from: '"mohammadali 👻" <foo@example.com>', // sender address
         to: email,// list of receivers
         subject: "you selected web Development service ", // Subject line
-        text: `welcome ${name} your service budget ${budget} and your bussiness Type is ${businesstype}`, // plain text body
+        text: `Dear ${name},
+
+        Thank you for choosing our booking service for your Web-Devlopment needs. We are excited to confirm your booking
+
+
+        Just to reconfirm, the details of your booking are as follows:
+        Name: Mr. ${name}
+        Service Type: Web-Devlopment
+        Budget: ${budget}
+        bussiness-Type is ${businesstype}
+
+
+        We have noted your budget and will ensure that we provide you with the best possible service within your budget constraints.
+
+        If you have any further questions or concerns, please do not hesitate to contact us. We will be more than happy to assist you.
+
+        Thank you for choosing our booking service, and we look forward to serving you soon.
+
+        Best regards,
+        Frevid solutions`, // plain text body
         // html body
     });
     console.log("Message sent: %s", info.messageId);
