@@ -126,7 +126,8 @@ routers.get('/ourwork', async (req, resp) => {
 
 //admin router 
 routers.get('/admin', auth, (req, resp) => {
-    return resp.render('admin');
+    const isLoggedIn = req.session.isLoggedIn || false;
+    return resp.render('admin', { isLoggedIn });
 })
 
 routers.get('/user', async (req, resp) => {
@@ -154,10 +155,9 @@ routers.get('/addDataourwork', (req, resp) => {
 
 routers.post('/addDataourwork', async (req, resp) => {
     try {
-        console.log(req.body);
-        console.log(req.file);
-        const { title, siteLink } = req.body
-        imgUrl = req.file.filename
+
+        const { imgUrl, title, siteLink } = req.body
+
         const addData = new ourWork({ imgUrl, title, siteLink });
         const add = await addData.save();
         return resp.status(201).redirect('/adminourwork');
@@ -421,7 +421,7 @@ const sendUserDevelopmentBookingMail = async (email, message) => {
     });
 
     let info = await transpoter.sendMail({
-        from: '"mohammadali 👻" <foo@example.com>', // sender address
+        from: '"mohammadali" <foo@example.com>', // sender address
         to: email,// list of receivers
         subject: "you selected Web Development service ", // Subject line
         text: message, // plain text body
@@ -649,7 +649,7 @@ const sendWebgBookingMail = async (email, name, budget, businesstype) => {
 }
 //web development booking
 
-routers.get('/developmentBooking', (req, resp) => {
+routers.get('/developmentBooking',auth, (req, resp) => {
     const isLoggedIn = req.session.isLoggedIn || false;
     return resp.render('developmentBooking', { isLoggedIn });
 });

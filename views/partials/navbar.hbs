@@ -48,10 +48,11 @@
     <div class="btn-flex d-flex justify-contant-end">
       {{!-- <i class="fa-sharp fa-solid fa-bell"></i> --}}
 
-      {{#if isLoggedIn}}
+      {{#if isLoggedIn }}
       <button type="button" class="nav-btn" id="btn-login" onclick="window.location.href='/logout'">log-out</button>
-     
-      <h1><i class="fa-solid fa-user"></i></h1>
+      
+      {{!-- <h1><i class="fa-solid fa-user"></i>{{this.email}}</h1> --}}
+    
       {{else}}
       <button type="button" class="nav-btn" id="btn-login" onclick="window.location.href='/login'">log-in</button>
       {{/if}}
